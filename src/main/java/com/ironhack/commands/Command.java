@@ -47,6 +47,7 @@ public class Command {
 				break;
 			case "exit":
 				System.out.println(ConsoleColors.YELLOW_BOLD + "Thank you for using E.M.O.F. CRM!");
+				System.out.println(ConsoleColors.WHITE_BOLD);
 				System.exit(1);
 				break;
 			default:
