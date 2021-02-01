@@ -2,6 +2,10 @@ package com.ironhack.data;
 
 import com.ironhack.classes.*;
 import com.ironhack.enums.Status;
+import com.ironhack.model.Account;
+import com.ironhack.model.Contact;
+import com.ironhack.model.Lead;
+import com.ironhack.model.Opportunity;
 import com.ironhack.styles.ConsoleColors;
 import java.util.ArrayList;
 import java.util.List;

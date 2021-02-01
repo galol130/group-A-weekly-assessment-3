@@ -1,14 +1,25 @@
-package com.ironhack.classes;
+package com.ironhack.model;
 
+import com.ironhack.classes.Helper;
+import com.ironhack.classes.Input;
 import com.ironhack.enums.Industry;
-import com.ironhack.enums.Product;
+import com.ironhack.model.Contact;
+import com.ironhack.model.Opportunity;
 import com.ironhack.styles.ConsoleColors;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.List;
 
+@Entity
 public class Account {
+
+    @Id
     private Integer id;
+    @Enumerated(EnumType.STRING)
     private Industry industry;
     private int employeeCount;
     private String city;

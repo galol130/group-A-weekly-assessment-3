@@ -1,18 +1,31 @@
-package com.ironhack.classes;
+package com.ironhack.model;
 
-import com.ironhack.enums.Industry;
+import com.ironhack.classes.Helper;
+import com.ironhack.classes.Input;
 import com.ironhack.enums.Product;
 import com.ironhack.enums.Status;
 import com.ironhack.styles.ConsoleColors;
 
+import javax.persistence.*;
 import java.util.Arrays;
 
+@Entity
 public class Opportunity {
+    @Id
     private Integer id;
+    @Enumerated(EnumType.STRING)
     private Product product;
     private int quantity;
+    @OneToOne
     private Contact decisionMaker;
+    @Enumerated(EnumType.STRING)
     private Status status;
+
+    @ManyToOne
+    private SalesRep salesRep;
+
+    public Opportunity() {
+    }
 
     public Opportunity(Contact decisionMaker) {
         setId(Helper.setOpportunityId());

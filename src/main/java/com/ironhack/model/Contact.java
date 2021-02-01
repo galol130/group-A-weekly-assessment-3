@@ -1,6 +1,15 @@
-package com.ironhack.classes;
+package com.ironhack.model;
 
+import com.ironhack.classes.Helper;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Contact {
+
+    @Id
     private Integer id;
     private String name;
     private String phoneNumber;

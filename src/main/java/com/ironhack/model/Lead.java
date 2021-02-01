@@ -1,16 +1,27 @@
-package com.ironhack.classes;
+package com.ironhack.model;
 
+import com.ironhack.classes.Helper;
+import com.ironhack.classes.Input;
 import com.ironhack.data.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Lead {
+
+    @Id
     private Integer id;
     private String name;
     private String phoneNumber;
     private String email;
     private String companyName;
+
+    @ManyToOne
+    private SalesRep salesRep;
 
     public Lead() {
         setId(Helper.setLeadId());
