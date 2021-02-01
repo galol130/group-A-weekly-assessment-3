@@ -132,4 +132,25 @@ public class Input {
         }
         return result;
     }
+
+    //      The method takes the prompt (message) and returns the user input (yes or no) as a String
+    public static String getYesNoUserInput(String prompt) {
+        Scanner scanner = new Scanner(System.in);
+        String userString;
+
+        while (true) {
+            System.out.println(prompt);
+            userString = scanner.nextLine();
+            if (userString.trim().toLowerCase().equals("y") || userString.trim().toLowerCase().equals("yes")) {
+                return "y";
+            }
+            else if (userString.trim().toLowerCase().equals("n") || userString.trim().toLowerCase().equals("no")) {
+                return "n";
+            }
+            else {
+                System.out.println(ConsoleColors.RED_BOLD + "Not a valid input.");
+                System.out.println(ConsoleColors.WHITE_BOLD);
+            }
+        }
+    }
 }

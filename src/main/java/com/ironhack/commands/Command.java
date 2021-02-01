@@ -1,5 +1,6 @@
 package com.ironhack.commands;
 
+import com.ironhack.classes.Input;
 import com.ironhack.data.Data;
 import com.ironhack.model.Account;
 import com.ironhack.model.Contact;
@@ -69,7 +70,24 @@ public class Command {
 			Data.getContactList().add(contact);
 			Opportunity opp = new Opportunity(contact);
 			Data.getOpportunityList().add(opp);
-			Data.getAccountList().add(new Account(Data.getContactList(), Data.getOpportunityList()));
+			if (Input.getYesNoUserInput("Would you like to create a new Account?(Y/N)").equals("y"))
+				Data.getAccountList().add(new Account(contact, opp));
+			else {
+				while (true) {
+					Scanner scanner = new Scanner(System.in);
+					System.out.println("Write an Account id to associate the Contact and Opportunity");
+					String input = scanner.nextLine().trim();
+					if (Input.validIdFormat(input)) {
+						Account account = Data.getAccountById(Integer.parseInt(input));
+						if (account != null) {
+							account.addContact(contact);
+							account.addOpportunity(opp);
+							break;
+						}
+						System.out.println("There is not any account with that id.");
+					}
+				}
+			}
 			System.out.println(ConsoleColors.WHITE_BRIGHT + "--> Lead ID " + lead.getId() + " converted successfully!");
 			System.out.println(ConsoleColors.WHITE_BOLD);
 			Data.deleteLead(lead);

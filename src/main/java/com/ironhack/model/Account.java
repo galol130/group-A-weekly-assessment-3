@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,16 +28,23 @@ public class Account {
     private List<Contact> contactList;
     private List<Opportunity> opportunityList;
 
-    public Account(List<Contact> contactList, List<Opportunity> opportunityList) {
+    public Account(Contact contact, Opportunity opportunity) {
         setId(Helper.setAccountId());
         setIndustry();
         setEmployeeCount();
         setCity();
         setCountry();
-        setContactList(contactList);
-        setOpportunityList(opportunityList);
+        setContactList(contact);
+        setOpportunityList(opportunity);
     }
 
+    public void addContact(Contact contact) {
+        this.contactList.add(contact);
+    }
+
+    public void addOpportunity(Opportunity opportunity) {
+        this.opportunityList.add(opportunity);
+    }
 
 //  Getters and setters
     public Integer getId() {
@@ -89,12 +97,14 @@ public class Account {
         this.country = Input.getStringUserInput("Please, write the country of the Company:");
     }
 
-    public void setContactList(List<Contact> contactList) {
-        this.contactList = contactList;
+    public void setContactList(Contact contact) {
+        this.contactList = new ArrayList<>();
+        this.contactList.add(contact);
     }
 
-    public void setOpportunityList(List<Opportunity> opportunityList) {
-        this.opportunityList = opportunityList;
+    public void setOpportunityList(Opportunity opportunity) {
+        this.opportunityList = new ArrayList<>();
+        this.opportunityList.add(opportunity);
     }
 
     @Override

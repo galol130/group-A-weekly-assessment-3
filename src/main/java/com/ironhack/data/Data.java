@@ -143,6 +143,17 @@ public class Data {
         return foundLead;
     }
 
+    //  Finds a Account by id
+    public static Account getAccountById(Integer id) {
+        Account foundAccount = null;
+        for (Account account : accountList) {
+            if (account.getId() == id) {
+                foundAccount = account;
+            }
+        }
+        return foundAccount;
+    }
+
     public static List<Opportunity> getOpportunityList() {
         return opportunityList;
     }
