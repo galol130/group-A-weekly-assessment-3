@@ -18,6 +18,7 @@ public class Input {
             commandSplit = command.split(" ");
 //          Validates if the command is ok and doesn't require an [id]
             if (command.equals("new lead")
+                    || command.equals("new salesrep")
                     || command.equals("show leads")
                     || command.equals("show accounts")
                     || command.equals("show opps")
