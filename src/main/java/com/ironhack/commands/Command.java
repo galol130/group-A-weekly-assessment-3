@@ -5,11 +5,28 @@ import com.ironhack.model.Account;
 import com.ironhack.model.Contact;
 import com.ironhack.model.Lead;
 import com.ironhack.model.Opportunity;
+import com.ironhack.repository.*;
 import com.ironhack.styles.ConsoleColors;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Scanner;
 
 public class Command {
+//	Repositories will be used to persist and retrieve data
+	@Autowired
+	private LeadRepository leadRepository;
+
+	@Autowired
+	private SalesRepRepository salesRepRepository;
+
+	@Autowired
+	private ContactRepository contactRepository;
+
+	@Autowired
+	private OpportunityRepository opportunityRepository;
+
+	@Autowired
+	private AccountRepository accountRepository;
 
 //	commandCaller method is used to parse the different methods available, it will call the adequate one depending on
 //	user input.
@@ -17,20 +34,31 @@ public class Command {
 
 		switch (command[0]){
 			case "new":
-				try {
-					Lead newLead = new Lead();
-					Data.getLeadList().add(newLead);
-					System.out.println(ConsoleColors.WHITE_BRIGHT  +
-							"--> Lead created successfully with ID: " + newLead.getId() +
-							"  (Total Leads available: " + Data.getLeadList().size() + ")");
-				}catch (Exception e) {
-					System.out.println(ConsoleColors.RED_BOLD + "Couldn't save the Lead. Try again!");
+				if (command[1].equals("lead")) {
+					try {
+						Lead newLead = new Lead();
+						Data.getLeadList().add(newLead);
+						System.out.println(ConsoleColors.WHITE_BRIGHT  +
+								"--> Lead created successfully with ID: " + newLead.getId() +
+								"  (Total Leads available: " + Data.getLeadList().size() + ")");
+					}catch (Exception e) {
+						System.out.println(ConsoleColors.RED_BOLD + "Couldn't save the Lead. Try again!");
+					}
+				} else if (command[1].equals("salesrep")) {
+					try {
+						// IMPLEMENTATION OF THE METHOD TO CREATE A NEW SALESREP
+					} catch (Exception e) {
+						System.out.println(ConsoleColors.RED_BOLD + "Couldn't save the SalesRep. Try again!");
+					}
 				}
 				System.out.println(ConsoleColors.WHITE_BOLD);
 				break;
 			case "show":
 				if(command[1].equals("leads"))
 					Data.showLeads();
+				else if(command[1].equals("salesrep"))
+					// IMPLEMENTATION OF THE METHOD TO SHOW THE LIST OF SALESREP
+					;
 				else if(command[1].equals("accounts"))
 					Data.showAccounts();
 				else if(command[1].equals("opps"))
