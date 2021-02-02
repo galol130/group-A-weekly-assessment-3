@@ -1,10 +1,7 @@
 package com.ironhack.model;
 
-import com.ironhack.classes.Helper;
 import com.ironhack.classes.Input;
 import com.ironhack.enums.Industry;
-import com.ironhack.model.Contact;
-import com.ironhack.model.Opportunity;
 import com.ironhack.styles.ConsoleColors;
 
 import javax.persistence.*;
@@ -16,6 +13,7 @@ import java.util.List;
 public class Account {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Enumerated(EnumType.STRING)
     private Industry industry;
@@ -31,7 +29,6 @@ public class Account {
     }
 
     public Account(Contact contact, Opportunity opportunity) {
-        setId(Helper.setAccountId());
         setIndustry();
         setEmployeeCount();
         setCity();

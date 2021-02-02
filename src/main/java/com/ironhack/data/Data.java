@@ -2,23 +2,52 @@ package com.ironhack.data;
 
 import com.ironhack.classes.*;
 import com.ironhack.enums.Status;
-import com.ironhack.model.Account;
-import com.ironhack.model.Contact;
-import com.ironhack.model.Leadd;
-import com.ironhack.model.Opportunity;
+import com.ironhack.model.*;
+import com.ironhack.repository.*;
 import com.ironhack.styles.ConsoleColors;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
-    private static List<Leadd> leaddList = new ArrayList<>();
-    private static List<Opportunity> opportunityList = new ArrayList<>();
-    private static List<Contact> contactList = new ArrayList<>();
-    private static List<Account> accountList = new ArrayList<>();
 
-//  showLeads() will show a list of all leads' ID and name. It just shows them on the console. As explained in the
-//  method createID() in the Lead class, IDs are also the position of each lead in the leadList.
+//  Repositories will be used to persist and retrieve data
+    @Autowired
+    private static LeaddRepository leaddRepository;
+
+    @Autowired
+    private static SalesRepRepository salesRepRepository;
+
+    @Autowired
+    private static ContactRepository contactRepository;
+
+    @Autowired
+    private static OpportunityRepository opportunityRepository;
+
+    @Autowired
+    private static AccountRepository accountRepository;
+
+
+//  showSalesRep() will show a list of all sales representatives' ID and name. It just shows them on the console.
+    public static void showSalesRep() {
+        List<SalesRep> salesRepList = salesRepRepository.findAll();
+        if (salesRepList.size() > 0) {
+            System.out.println(ConsoleColors.WHITE_BRIGHT + "Sales Representatives:");
+            for (SalesRep salesRep : salesRepList) {
+                System.out.println(ConsoleColors.WHITE_BRIGHT + "\tID " + salesRep.getId() +
+                        ConsoleColors.WHITE_BOLD + " --> Name: " + salesRep.getName();
+            }
+        } else {
+            System.out.println(ConsoleColors.RED_BOLD + "No sales representatives to show, the is list empty.");
+        }
+        System.out.println(ConsoleColors.WHITE_BOLD);
+    }
+
+
+//  showLeads() will show a list of all leads' ID, name and company. It just shows them on the console.
     public static void showLeads() {
+        List<Leadd> leaddList = leaddRepository.findAll();
         if (leaddList.size() > 0) {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Leads:");
             for (Leadd leadd : leaddList) {
@@ -27,7 +56,7 @@ public class Data {
                         ", Company: " + leadd.getCompanyName());
             }
         } else {
-            System.out.println(ConsoleColors.RED_BOLD + "No leads to show, list empty.");
+            System.out.println(ConsoleColors.RED_BOLD + "No leads to show, the list is empty.");
         }
         System.out.println(ConsoleColors.WHITE_BOLD);
     }
@@ -36,6 +65,7 @@ public class Data {
 //  print the information whenever there is a coincidence of IDs. If there is no coincidence, it will show an
 //  error message.
     public static void lookUpLead(int id) {
+        List<Leadd> leaddList = leaddRepository.findAll();
         boolean check = false;
         for (Leadd leadd : leaddList) {
             if (id == leadd.getId()) {
@@ -57,6 +87,7 @@ public class Data {
 
     //Removes the desired lead
     public static void deleteLead(Leadd leadd) {
+        List<Leadd> leaddList = leaddRepository.findAll();
         if (leaddList.contains(leadd)) {
             leaddList.remove(leadd);
         } else {
@@ -95,6 +126,7 @@ public class Data {
 
 //  Looks for an opportunity by id
     public static Opportunity getOpportunityById(int id) {
+        List<Opportunity> opportunityList = opportunityRepository.findAll();
         Opportunity oppFound = null;
         for (Opportunity opp : opportunityList) {
             if (opp.getId() == id) {
@@ -105,6 +137,7 @@ public class Data {
     }
 
     public static void showAccounts() {
+        List<Account> accountList = accountRepository.findAll();
         if (accountList.size() > 0) {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Accounts: ");
             for (Account account : accountList) {
@@ -117,6 +150,7 @@ public class Data {
     }
 
     public static void showOpportunities() {
+        List<Opportunity> opportunityList = opportunityRepository.findAll();
         if (opportunityList.size() > 0) {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Opportunities:");
             for (Opportunity opportunity : opportunityList) {
@@ -128,12 +162,17 @@ public class Data {
         System.out.println(ConsoleColors.WHITE_BOLD);
     }
 
-    public static List<Leadd> getLeadList() {
+//  TODOS LOS SIGUIENTES MÉTDOS
+//  DEBEN CAMBIARSE
+//  O MORIR EN EL INTETO
+
+    public static List<Leadd> getLeaddList() {
         return leaddList;
     }
 
 //  Finds a Lead by id
     public static Leadd getLeadById(Integer id) {
+        List<Leadd> leaddList = leaddRepository.findAll();
         Leadd foundLeadd = null;
         for (Leadd leadd : leaddList) {
             if (leadd.getId() == id) {
@@ -145,6 +184,7 @@ public class Data {
 
     //  Finds a Account by id
     public static Account getAccountById(Integer id) {
+        List<Account> accountList = accountRepository.findAll();
         Account foundAccount = null;
         for (Account account : accountList) {
             if (account.getId() == id) {

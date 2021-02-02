@@ -58,8 +58,7 @@ public class Command {
 				if(command[1].equals("leads"))
 					Data.showLeads();
 				else if(command[1].equals("salesrep"))
-					// IMPLEMENTATION OF THE METHOD TO SHOW THE LIST OF SALESREP
-					;
+					Data.showSalesRep();
 				else if(command[1].equals("accounts"))
 					Data.showAccounts();
 				else if(command[1].equals("opps"))

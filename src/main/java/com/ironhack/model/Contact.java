@@ -1,13 +1,12 @@
 package com.ironhack.model;
 
-import com.ironhack.classes.Helper;
-
 import javax.persistence.*;
 
 @Entity
 public class Contact {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String phoneNumber;
@@ -19,7 +18,6 @@ public class Contact {
     private Account account;
 
     public Contact(String name, String phoneNumber, String email, String companyName) {
-        setId(Helper.setContactId());
         setName(name);
         setPhoneNumber(phoneNumber);
         setEmail(email);

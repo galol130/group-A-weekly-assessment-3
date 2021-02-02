@@ -1,6 +1,5 @@
 package com.ironhack.model;
 
-import com.ironhack.classes.Helper;
 import com.ironhack.classes.Input;
 import com.ironhack.enums.Product;
 import com.ironhack.enums.Status;
@@ -12,6 +11,7 @@ import java.util.Arrays;
 @Entity
 public class Opportunity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Enumerated(EnumType.STRING)
     private Product product;
@@ -34,7 +34,6 @@ public class Opportunity {
     }
 
     public Opportunity(Contact decisionMaker) {
-        setId(Helper.setOpportunityId());
         setProduct();
         setQuantity();
         setDecisionMaker(decisionMaker);
