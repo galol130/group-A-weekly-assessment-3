@@ -13,21 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Scanner;
 
 public class Command {
-//	Repositories will be used to persist and retrieve data
-	@Autowired
-	private LeadRepository leadRepository;
-
-	@Autowired
-	private SalesRepRepository salesRepRepository;
-
-	@Autowired
-	private ContactRepository contactRepository;
-
-	@Autowired
-	private OpportunityRepository opportunityRepository;
-
-	@Autowired
-	private AccountRepository accountRepository;
 
 //	commandCaller method is used to parse the different methods available, it will call the adequate one depending on
 //	user input.
@@ -58,8 +43,7 @@ public class Command {
 				if(command[1].equals("leads"))
 					Data.showLeads();
 				else if(command[1].equals("salesrep"))
-					// IMPLEMENTATION OF THE METHOD TO SHOW THE LIST OF SALESREP
-					;
+					Data.showSalesRep();
 				else if(command[1].equals("accounts"))
 					Data.showAccounts();
 				else if(command[1].equals("opps"))
