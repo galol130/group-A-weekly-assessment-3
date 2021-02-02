@@ -1,9 +1,9 @@
 package com.ironhack.repository;
 
-import com.ironhack.model.Lead;
+import com.ironhack.model.Leadd;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LeadRepository extends JpaRepository<Lead, Integer> {
+public interface LeaddRepository extends JpaRepository<Leadd, Integer> {
 }

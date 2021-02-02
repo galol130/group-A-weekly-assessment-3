@@ -4,14 +4,14 @@ import com.ironhack.classes.*;
 import com.ironhack.enums.Status;
 import com.ironhack.model.Account;
 import com.ironhack.model.Contact;
-import com.ironhack.model.Lead;
+import com.ironhack.model.Leadd;
 import com.ironhack.model.Opportunity;
 import com.ironhack.styles.ConsoleColors;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
-    private static List<Lead> leadList = new ArrayList<>();
+    private static List<Leadd> leaddList = new ArrayList<>();
     private static List<Opportunity> opportunityList = new ArrayList<>();
     private static List<Contact> contactList = new ArrayList<>();
     private static List<Account> accountList = new ArrayList<>();
@@ -19,12 +19,12 @@ public class Data {
 //  showLeads() will show a list of all leads' ID and name. It just shows them on the console. As explained in the
 //  method createID() in the Lead class, IDs are also the position of each lead in the leadList.
     public static void showLeads() {
-        if (leadList.size() > 0) {
+        if (leaddList.size() > 0) {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Leads:");
-            for (Lead lead : leadList) {
-                System.out.println(ConsoleColors.WHITE_BRIGHT + "\tID " + lead.getId() +
-                        ConsoleColors.WHITE_BOLD + " --> Name: " + lead.getName() +
-                        ", Company: " + lead.getCompanyName());
+            for (Leadd leadd : leaddList) {
+                System.out.println(ConsoleColors.WHITE_BRIGHT + "\tID " + leadd.getId() +
+                        ConsoleColors.WHITE_BOLD + " --> Name: " + leadd.getName() +
+                        ", Company: " + leadd.getCompanyName());
             }
         } else {
             System.out.println(ConsoleColors.RED_BOLD + "No leads to show, list empty.");
@@ -37,10 +37,10 @@ public class Data {
 //  error message.
     public static void lookUpLead(int id) {
         boolean check = false;
-        for (Lead lead : leadList) {
-            if (id == lead.getId()) {
+        for (Leadd leadd : leaddList) {
+            if (id == leadd.getId()) {
                 check = true;
-                System.out.println(ConsoleColors.WHITE_BRIGHT + lead);
+                System.out.println(ConsoleColors.WHITE_BRIGHT + leadd);
                 System.out.println(ConsoleColors.WHITE_BOLD);
             }
         }
@@ -56,9 +56,9 @@ public class Data {
 //    }
 
     //Removes the desired lead
-    public static void deleteLead(Lead lead) {
-        if (leadList.contains(lead)) {
-            leadList.remove(lead);
+    public static void deleteLead(Leadd leadd) {
+        if (leaddList.contains(leadd)) {
+            leaddList.remove(leadd);
         } else {
             System.out.println(ConsoleColors.RED_BOLD + "Sorry, the lead is not in the Lead List.");
         }
@@ -128,19 +128,19 @@ public class Data {
         System.out.println(ConsoleColors.WHITE_BOLD);
     }
 
-    public static List<Lead> getLeadList() {
-        return leadList;
+    public static List<Leadd> getLeadList() {
+        return leaddList;
     }
 
 //  Finds a Lead by id
-    public static Lead getLeadById(Integer id) {
-        Lead foundLead = null;
-        for (Lead lead : leadList) {
-            if (lead.getId() == id) {
-                foundLead = lead;
+    public static Leadd getLeadById(Integer id) {
+        Leadd foundLeadd = null;
+        for (Leadd leadd : leaddList) {
+            if (leadd.getId() == id) {
+                foundLeadd = leadd;
             }
         }
-        return foundLead;
+        return foundLeadd;
     }
 
     //  Finds a Account by id
@@ -166,8 +166,8 @@ public class Data {
         return accountList;
     }
 
-    public static void setLeadList(List<Lead> leadList) {
-        Data.leadList = leadList;
+    public static void setLeadList(List<Leadd> leaddList) {
+        Data.leaddList = leaddList;
     }
 
     public static void setOpportunityList(List<Opportunity> opportunityList) {

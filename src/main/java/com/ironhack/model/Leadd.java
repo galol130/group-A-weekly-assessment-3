@@ -2,18 +2,12 @@ package com.ironhack.model;
 
 import com.ironhack.classes.Helper;
 import com.ironhack.classes.Input;
-import com.ironhack.data.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
 
 @Entity
-public class Lead {
-
+public class Leadd {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String phoneNumber;
@@ -23,7 +17,8 @@ public class Lead {
     @ManyToOne
     private SalesRep salesRep;
 
-    public Lead() {
+
+    public Leadd() {
         setId(Helper.setLeadId());
         setName();
         setPhoneNumber();
@@ -32,7 +27,7 @@ public class Lead {
     }
 
     //This constructor is only created for the sake of the tests. Has no use in the project besides that.
-    public Lead(Integer id, String name, String phoneNumber, String email, String companyName) {
+    public Leadd(Integer id, String name, String phoneNumber, String email, String companyName) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -41,6 +36,7 @@ public class Lead {
     }
 
     //  Getters and setters
+
     public Integer getId() {
         return id;
     }

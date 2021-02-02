@@ -24,6 +24,12 @@ public class Opportunity {
     @ManyToOne
     private SalesRep salesRep;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
+
+
     public Opportunity() {
     }
 

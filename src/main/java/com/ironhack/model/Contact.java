@@ -2,9 +2,7 @@ package com.ironhack.model;
 
 import com.ironhack.classes.Helper;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Contact {
@@ -15,6 +13,10 @@ public class Contact {
     private String phoneNumber;
     private String email;
     private String companyName;
+
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     public Contact(String name, String phoneNumber, String email, String companyName) {
         setId(Helper.setContactId());

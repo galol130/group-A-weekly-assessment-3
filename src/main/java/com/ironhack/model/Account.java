@@ -7,10 +7,7 @@ import com.ironhack.model.Contact;
 import com.ironhack.model.Opportunity;
 import com.ironhack.styles.ConsoleColors;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,8 +22,13 @@ public class Account {
     private int employeeCount;
     private String city;
     private String country;
+    @OneToMany(mappedBy = "account")
     private List<Contact> contactList;
+    @OneToMany(mappedBy = "account")
     private List<Opportunity> opportunityList;
+
+    public Account() {
+    }
 
     public Account(Contact contact, Opportunity opportunity) {
         setId(Helper.setAccountId());

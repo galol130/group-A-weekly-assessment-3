@@ -4,7 +4,7 @@ import com.ironhack.classes.Input;
 import com.ironhack.data.Data;
 import com.ironhack.model.Account;
 import com.ironhack.model.Contact;
-import com.ironhack.model.Lead;
+import com.ironhack.model.Leadd;
 import com.ironhack.model.Opportunity;
 import com.ironhack.repository.*;
 import com.ironhack.styles.ConsoleColors;
@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class Command {
 //	Repositories will be used to persist and retrieve data
 	@Autowired
-	private LeadRepository leadRepository;
+	private LeaddRepository leadRepository;
 
 	@Autowired
 	private SalesRepRepository salesRepRepository;
@@ -37,10 +37,10 @@ public class Command {
 			case "new":
 				if (command[1].equals("lead")) {
 					try {
-						Lead newLead = new Lead();
-						Data.getLeadList().add(newLead);
+						Leadd newLeadd = new Leadd();
+						Data.getLeadList().add(newLeadd);
 						System.out.println(ConsoleColors.WHITE_BRIGHT  +
-								"--> Lead created successfully with ID: " + newLead.getId() +
+								"--> Lead created successfully with ID: " + newLeadd.getId() +
 								"  (Total Leads available: " + Data.getLeadList().size() + ")");
 					}catch (Exception e) {
 						System.out.println(ConsoleColors.RED_BOLD + "Couldn't save the Lead. Try again!");
@@ -91,10 +91,10 @@ public class Command {
 //		Then it creates opportunity with contact information. The other fields are asked by the class.
 // 		Then it creates an account and adds it to the list. Finally, the lead is deleted.
 	public static void convert(Integer id){
-		Lead lead = Data.getLeadById(id);
+		Leadd leadd = Data.getLeadById(id);
 
-		if(lead != null) {
-			Contact contact = new Contact(lead.getName(), lead.getPhoneNumber(), lead.getEmail(), lead.getCompanyName());
+		if(leadd != null) {
+			Contact contact = new Contact(leadd.getName(), leadd.getPhoneNumber(), leadd.getEmail(), leadd.getCompanyName());
 			Data.getContactList().add(contact);
 			Opportunity opp = new Opportunity(contact);
 			Data.getOpportunityList().add(opp);
@@ -116,9 +116,9 @@ public class Command {
 					}
 				}
 			}
-			System.out.println(ConsoleColors.WHITE_BRIGHT + "--> Lead ID " + lead.getId() + " converted successfully!");
+			System.out.println(ConsoleColors.WHITE_BRIGHT + "--> Lead ID " + leadd.getId() + " converted successfully!");
 			System.out.println(ConsoleColors.WHITE_BOLD);
-			Data.deleteLead(lead);
+			Data.deleteLead(leadd);
 		}else{
 			System.out.println(ConsoleColors.RED_BOLD + "Error fetching the ID! Check the ID. If error persists, contact admin.");
 			System.out.println(ConsoleColors.WHITE_BOLD);

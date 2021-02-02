@@ -1,6 +1,6 @@
 package com.ironhack.data;
 
-import com.ironhack.model.Lead;
+import com.ironhack.model.Leadd;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,20 +14,20 @@ class DataTest {
     //messages depending on what the user has written. It is never something that would stop the application or
     // anything like that.
 
-    private List<Lead> leadList = new ArrayList<>();
+    private List<Leadd> leaddList = new ArrayList<>();
 
     @BeforeEach
     public void setUp() {
-        leadList.add(new Lead(1, "James McCarthy", "555-6661124", "invented@email.haha"
+        leaddList.add(new Leadd(1, "James McCarthy", "555-6661124", "invented@email.haha"
                         ,"invented company S.L."));
-        leadList.add(new Lead(2, "Carles Puyol", "+34 65435631", "carles@puyi.com"
+        leaddList.add(new Leadd(2, "Carles Puyol", "+34 65435631", "carles@puyi.com"
                         , "FC Barcelona"));
-        Data.setLeadList(leadList);
+        Data.setLeadList(leaddList);
     }
 
     @AfterEach
     public void tearDown() {
-        leadList.clear();
+        leaddList.clear();
     }
 
     @Test
@@ -37,7 +37,7 @@ class DataTest {
 
     @Test
     void showLeads_EmptyLeadList_ErrorMessage() {
-        leadList.clear();
+        leaddList.clear();
         Data.showLeads();
     }
 
@@ -54,14 +54,14 @@ class DataTest {
     @Test
     void deleteLead_Lead_CorrectlyRemoved() {
         Data.showLeads();
-        Data.deleteLead(leadList.get(1));
+        Data.deleteLead(leaddList.get(1));
         System.out.println("Lead list after deleting the lead.");
         Data.showLeads();
     }
 
     @Test
     void deleteLead_NotExistingLead_ErrorMessage() {
-        Data.deleteLead(new Lead(4, "bla bla", "bla bla", "bla bla", "ble"));
+        Data.deleteLead(new Leadd(4, "bla bla", "bla bla", "bla bla", "ble"));
     }
 
 }

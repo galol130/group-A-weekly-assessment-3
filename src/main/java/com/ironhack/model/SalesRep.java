@@ -1,6 +1,7 @@
 package com.ironhack.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class SalesRep {
@@ -12,11 +13,11 @@ public class SalesRep {
 
 //  Each SalesRep has an X number of Leads which are, supposedly, not assigned to another sales representative.
     @OneToMany(mappedBy = "salesRep")
-    private Lead lead;
+    private List<Leadd> leadds;
 
 //  Each SalesRep has an X number of Opportunities.
     @OneToMany(mappedBy = "salesRep")
-    private Opportunity opportunity;
+    private List<Opportunity> opportunities;
 
     public SalesRep() {
     }

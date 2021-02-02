@@ -3,11 +3,12 @@ package com.ironhack;
 import com.ironhack.classes.Input;
 import com.ironhack.commands.Command;
 import com.ironhack.styles.Start;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Main {
+public class Main{
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
 
@@ -19,7 +20,6 @@ public class Main {
 //      Call the getValidCommand method that validates menu input and calls the methods accordingly.
             String[] command = Input.getValidCommand();
             Command.commandCaller(command);
-
         }
     }
 }
