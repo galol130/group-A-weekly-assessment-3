@@ -38,10 +38,10 @@ public class Command {
 				if (command[1].equals("lead")) {
 					try {
 						Leadd newLeadd = new Leadd();
-						Data.getLeadList().add(newLeadd);
+						Data.getLeaddList().add(newLeadd);
 						System.out.println(ConsoleColors.WHITE_BRIGHT  +
 								"--> Lead created successfully with ID: " + newLeadd.getId() +
-								"  (Total Leads available: " + Data.getLeadList().size() + ")");
+								"  (Total Leads available: " + Data.getLeaddList().size() + ")");
 					}catch (Exception e) {
 						System.out.println(ConsoleColors.RED_BOLD + "Couldn't save the Lead. Try again!");
 					}

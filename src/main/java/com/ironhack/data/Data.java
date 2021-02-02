@@ -7,7 +7,6 @@ import com.ironhack.repository.*;
 import com.ironhack.styles.ConsoleColors;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
@@ -36,7 +35,7 @@ public class Data {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Sales Representatives:");
             for (SalesRep salesRep : salesRepList) {
                 System.out.println(ConsoleColors.WHITE_BRIGHT + "\tID " + salesRep.getId() +
-                        ConsoleColors.WHITE_BOLD + " --> Name: " + salesRep.getName();
+                        ConsoleColors.WHITE_BOLD + " --> Name: " + salesRep.getName());
             }
         } else {
             System.out.println(ConsoleColors.RED_BOLD + "No sales representatives to show, the is list empty.");
@@ -167,7 +166,7 @@ public class Data {
 //  O MORIR EN EL INTETO
 
     public static List<Leadd> getLeaddList() {
-        return leaddList;
+        return leaddRepository.findAll();
     }
 
 //  Finds a Lead by id
@@ -195,30 +194,30 @@ public class Data {
     }
 
     public static List<Opportunity> getOpportunityList() {
-        return opportunityList;
+        return opportunityRepository.findAll();
     }
 
     public static List<Contact> getContactList() {
-        return contactList;
+        return contactRepository.findAll();
     }
 
     public static List<Account> getAccountList() {
-        return accountList;
+        return accountRepository.findAll();
     }
 
     public static void setLeadList(List<Leadd> leaddList) {
-        Data.leaddList = leaddList;
+        leaddRepository.saveAll(leaddList);
     }
 
     public static void setOpportunityList(List<Opportunity> opportunityList) {
-        Data.opportunityList = opportunityList;
+       opportunityRepository.saveAll(opportunityList);
     }
 
     public static void setContactList(List<Contact> contactList) {
-        Data.contactList = contactList;
+        contactRepository.saveAll(contactList);
     }
 
     public static void setAccountList(List<Account> accountList) {
-        Data.accountList = accountList;
+        accountRepository.saveAll(accountList);
     }
 }
