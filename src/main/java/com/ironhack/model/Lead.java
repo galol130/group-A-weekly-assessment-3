@@ -1,19 +1,14 @@
 package com.ironhack.model;
 
-import com.ironhack.classes.Helper;
 import com.ironhack.classes.Input;
-import com.ironhack.data.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
 
 @Entity
 public class Lead {
 
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String phoneNumber;
@@ -24,7 +19,6 @@ public class Lead {
     private SalesRep salesRep;
 
     public Lead() {
-        setId(Helper.setLeadId());
         setName();
         setPhoneNumber();
         setEmail();
