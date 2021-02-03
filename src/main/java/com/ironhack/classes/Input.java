@@ -1,11 +1,12 @@
 package com.ironhack.classes;
 
 import com.ironhack.styles.ConsoleColors;
+
 import java.util.Scanner;
 
 public class Input {
 
-//  Validates a command typed by a user, returning the command as an array of strings only if it's a valid one.
+    //  Validates a command typed by a user, returning the command as an array of strings only if it's a valid one.
     public static String[] getValidCommand() {
         Scanner scanner = new Scanner(System.in);
         String command;
@@ -47,7 +48,7 @@ public class Input {
         }
     }
 
-//    Validates if Id is a positive integer
+    //    Validates if Id is a positive integer
     public static boolean validIdFormat(String stringId) {
         try {
             int numId = Integer.parseInt(stringId);
@@ -63,25 +64,24 @@ public class Input {
         return false;
     }
 
-//      The method takes the prompt (message) and returns the user input as a String
+    //      The method takes the prompt (message) and returns the user input as a String
     public static String getStringUserInput(String prompt) {
         Scanner scanner = new Scanner(System.in);
         String userString;
 
         while (true) {
-            System.out.println(prompt);
+            System.out.println(ConsoleColors.WHITE_BOLD + prompt);
             userString = scanner.nextLine();
             if (userString.trim().length() > 0) {
                 return userString.trim();
-            }
-            else {
+            } else {
                 System.out.println(ConsoleColors.RED_BOLD + "Not a valid input.");
                 System.out.println(ConsoleColors.WHITE_BOLD);
             }
         }
     }
 
-//  The method takes the prompt (message) and the Enums as an array list
+    //  The method takes the prompt (message) and the Enums as an array list
 //  (To do this, use '(String[]) Arrays.stream(<EnumeratorName>.values()).toArray()' when calling the method)
     public static String getEnumUserInput(String prompt, String[] enumList) {
         Scanner scanner = new Scanner(System.in);
@@ -91,7 +91,7 @@ public class Input {
             System.out.println(ConsoleColors.WHITE_BOLD);
             System.out.println(prompt);
             for (String enumElement : enumList) {
-                System.out.println("\t"+enumElement);
+                System.out.println("\t" + enumElement);
             }
             userString = scanner.nextLine().trim().toUpperCase();
             for (String enumElement : enumList) {
@@ -104,11 +104,11 @@ public class Input {
         }
     }
 
-//      The method takes the prompt (message) and returns the user input as an int or catches a exception if it isn't
+    //      The method takes the prompt (message) and returns the user input as an int or catches a exception if it isn't
     public static int getNumberUserInput(String prompt) {
         Scanner scanner = new Scanner(System.in);
-        String	str = "";
-        int		result = 0;
+        String str = "";
+        int result = 0;
 
         while (str.length() < 1) {
             System.out.println(prompt);
@@ -120,13 +120,11 @@ public class Input {
                     System.out.println(ConsoleColors.WHITE_BOLD);
                     str = "";
                 }
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 System.out.println(ConsoleColors.RED_BOLD + "You must type a number.");
                 System.out.println(ConsoleColors.WHITE_BOLD);
                 str = "";
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println(ConsoleColors.RED_BOLD + "Something was wrong.");
                 str = "";
             }
@@ -144,11 +142,9 @@ public class Input {
             userString = scanner.nextLine();
             if (userString.trim().toLowerCase().equals("y") || userString.trim().toLowerCase().equals("yes")) {
                 return "y";
-            }
-            else if (userString.trim().toLowerCase().equals("n") || userString.trim().toLowerCase().equals("no")) {
+            } else if (userString.trim().toLowerCase().equals("n") || userString.trim().toLowerCase().equals("no")) {
                 return "n";
-            }
-            else {
+            } else {
                 System.out.println(ConsoleColors.RED_BOLD + "Not a valid input.");
                 System.out.println(ConsoleColors.WHITE_BOLD);
             }
