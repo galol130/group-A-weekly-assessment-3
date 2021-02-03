@@ -225,4 +225,9 @@ public class DataService {
     public void addLeadd(Leadd newLeadd) {
         leaddRepository.save(newLeadd);
     }
+
+    public List<SalesRep> getSalesRep(){
+        return salesRepRepository.findAll();
+    }
+
 }

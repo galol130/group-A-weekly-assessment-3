@@ -1,17 +1,18 @@
 package com.ironhack.model;
 
 import com.ironhack.classes.Input;
-import com.ironhack.repository.SalesRepRepository;
+import com.ironhack.data.DataService;
 import com.ironhack.styles.ConsoleColors;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Leadd {
 
     @Autowired
-    private SalesRepRepository salesRepRepository;
+    private DataService dataService;
 
     @Id
     private Integer id;
@@ -90,11 +91,12 @@ public class Leadd {
 
     public void setSalesRep() {
         boolean check = false;
+        List<SalesRep> salesRepList = dataService.getSalesRep();
         while (!check) {
             Integer salesRepId = Input.getNumberUserInput("Please, write the sales representative id:");
-            for (int i = 0; i < salesRepRepository.findAll().size(); i++) {
-                if (salesRepRepository.findAll().get(i).getId().equals(salesRepId)) {
-                    this.salesRep = salesRepRepository.findAll().get(i);
+            for (SalesRep rep : salesRepList) {
+                if (rep.getId().equals(salesRepId)) {
+                    this.salesRep = rep;
                     check = true;
                 }
             }
