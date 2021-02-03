@@ -1,9 +1,7 @@
 package com.ironhack.model;
 
 import com.ironhack.classes.Input;
-import com.ironhack.data.DataService;
 import com.ironhack.styles.ConsoleColors;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,8 +17,11 @@ public class Leadd {
     private String companyName;
 
     @ManyToOne
+    @JoinColumn(name = "sales_rep_id")
     private SalesRep salesRep;
 
+    public Leadd() {
+    }
 
     public Leadd(List<SalesRep> salesRepList) {
         setName();
@@ -89,6 +90,9 @@ public class Leadd {
     public void setSalesRep(List<SalesRep> salesRepList) {
         boolean check = false;
         while (!check) {
+            for (SalesRep rep : salesRepList) {
+                System.out.println(ConsoleColors.YELLOW_BOLD + "\tSales rep: ID- " + rep.getId() + " | Name: " + rep.getName());
+            }
             Integer salesRepId = Input.getNumberUserInput("Please, write the sales representative id:");
             for (SalesRep rep : salesRepList) {
                 if (rep.getId().equals(salesRepId)) {
