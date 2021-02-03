@@ -68,12 +68,55 @@ public class CommandService {
 			case "report":
 				reportCommand(command);
 				break;
+			case "mean":
+			case "min":
+			case "median":
+			case "max":
+				statistics(command);
+				break;
 			default:
 				break;
 		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println(ConsoleColors.YELLOW_BOLD + "\nPress 'Enter' to continue");
 		sc.nextLine();
+	}
+
+//	This method calls for the appropriate query in each case.
+	private void statistics(String[] command) {
+		String input = "";
+
+		for (String string : command)
+			input = input.concat(string) + " ";
+		input = input.trim();
+
+		if (input.equals("mean employeecount")) {
+
+		} else if (input.equals("median employeecount")) {
+
+		} else if (input.equals("max employeecount")) {
+
+		} else if (input.equals("min employeecount")) {
+
+		} else if (input.equals("mean quantity")) {
+
+		} else if (input.equals("median quantity")) {
+
+		} else if (input.equals("max quantity")) {
+
+		} else if (input.equals("min quantity")) {
+
+		} else if (input.equals("mean opps per account")) {
+
+		} else if (input.equals("median opps per account")) {
+
+		} else if (input.equals("max opps per account")) {
+
+		} else if (input.equals("min opps per account")) {
+
+		} else {
+			System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
+		}
 	}
 
 //	reportCommand method calls for the appropriate query in each case.

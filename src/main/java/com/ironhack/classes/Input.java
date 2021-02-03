@@ -41,8 +41,12 @@ public class Input {
                 if (validIdFormat(commandSplit[2]))
                     return commandSplit;
             } else if (commandSplit.length == 4 &&
-                    commandSplit[0].equals("report")){
+                    commandSplit[0].equals("report")) {
                 if (report(command))
+                    return commandSplit;
+            } else if (commandSplit[0].equals("mean") || commandSplit[0].equals("median") ||
+                    commandSplit[0].equals("max") || commandSplit[0].equals("min")) {
+                if (statistics(command))
                     return commandSplit;
             } else {
 //              Command is not correct
@@ -52,7 +56,28 @@ public class Input {
         }
     }
 
-//Validates if it's a valid report
+    private static boolean statistics(String command) {
+
+        if (command.equals("mean employeecount")
+                || (command.equals("median employeecount"))
+                || (command.equals("max employeecount"))
+                || (command.equals("min employeecount"))
+                || (command.equals("mean quantity"))
+                || (command.equals("median quantity"))
+                || (command.equals("max quantity"))
+                || (command.equals("min quantity"))
+                || (command.equals("mean opps per account"))
+                || (command.equals("median opps per account"))
+                || (command.equals("max opps per account"))
+                || (command.equals("min opps per account"))) {
+            return true;
+        } else {
+            System.out.println("Not a valid statistics request.");
+            return false;
+        }
+    }
+
+    //Validates if it's a valid report
     private static boolean report(String input) {
 
         if (input.equals("report lead by salesrep")
