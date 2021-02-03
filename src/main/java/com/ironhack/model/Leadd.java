@@ -1,6 +1,5 @@
 package com.ironhack.model;
 
-import com.ironhack.classes.Helper;
 import com.ironhack.classes.Input;
 import javax.persistence.*;
 
@@ -18,7 +17,6 @@ public class Leadd {
 
 
     public Leadd() {
-        setId(Helper.setLeadId());
         setName();
         setPhoneNumber();
         setEmail();

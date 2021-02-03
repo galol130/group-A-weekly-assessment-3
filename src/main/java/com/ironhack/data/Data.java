@@ -6,11 +6,11 @@ import com.ironhack.model.*;
 import com.ironhack.repository.*;
 import com.ironhack.styles.ConsoleColors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.List;
-
+@EnableJpaRepositories
 public class Data {
-
 //  Repositories will be used to persist and retrieve data
     @Autowired
     private static LeaddRepository leaddRepository;
