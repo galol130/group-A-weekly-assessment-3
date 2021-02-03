@@ -1,5 +1,7 @@
 package com.ironhack.model;
 
+import com.ironhack.classes.Input;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,10 +22,10 @@ public class SalesRep {
     private List<Opportunity> opportunities;
 
     public SalesRep() {
+        setName();
     }
 
-    public SalesRep(Integer id, String name) {
-        this.id = id;
+    public SalesRep(String name) {
         this.name = name;
     }
 
@@ -39,7 +41,8 @@ public class SalesRep {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName() {
+        this.name = Input.getStringUserInput("Please, write the name:");
     }
+
 }

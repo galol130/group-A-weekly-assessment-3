@@ -158,9 +158,13 @@ public class DataService {
         System.out.println(ConsoleColors.WHITE_BOLD);
     }
 
-//  TODOS LOS SIGUIENTES MÉTDOS
+//  TODOS LOS SIGUIENTES MÉTODOS
 //  DEBEN CAMBIARSE
-//  O MORIR EN EL INTETO
+//  O MORIR EN EL INTENTO
+
+    /*public static List<SalesRep> getSalesRepList() {
+        return salesRepRepository.findAll();
+    }*/
 
     public List<Leadd> getLeaddList() {
         return leaddRepository.findAll();
