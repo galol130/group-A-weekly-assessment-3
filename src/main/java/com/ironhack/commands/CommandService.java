@@ -2,14 +2,12 @@ package com.ironhack.commands;
 
 import com.ironhack.classes.Input;
 import com.ironhack.data.DataService;
-import com.ironhack.model.Account;
-import com.ironhack.model.Contact;
-import com.ironhack.model.Leadd;
-import com.ironhack.model.Opportunity;
+import com.ironhack.model.*;
 import com.ironhack.styles.ConsoleColors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Scanner;
 
 @Service
@@ -25,7 +23,8 @@ public class CommandService {
 			case "new":
 				if (command[1].equals("lead")) {
 					try {
-						Leadd newLeadd = new Leadd();
+						List<SalesRep> salesRepList =  dataService.getSalesRep();
+						Leadd newLeadd = new Leadd(salesRepList);
 						dataService.addLeadd(newLeadd);
 						System.out.println(ConsoleColors.WHITE_BRIGHT  +
 								"--> Lead created successfully with ID: " + newLeadd.getId() +

@@ -11,9 +11,6 @@ import java.util.List;
 @Entity
 public class Leadd {
 
-    @Autowired
-    private DataService dataService;
-
     @Id
     private Integer id;
     private String name;
@@ -25,12 +22,12 @@ public class Leadd {
     private SalesRep salesRep;
 
 
-    public Leadd() {
+    public Leadd(List<SalesRep> salesRepList) {
         setName();
         setPhoneNumber();
         setEmail();
         setCompanyName();
-        setSalesRep();
+        setSalesRep(salesRepList);
     }
 
     //This constructor is only created for the sake of the tests. Has no use in the project besides that.
@@ -89,9 +86,8 @@ public class Leadd {
     }
 
 
-    public void setSalesRep() {
+    public void setSalesRep(List<SalesRep> salesRepList) {
         boolean check = false;
-        List<SalesRep> salesRepList = dataService.getSalesRep();
         while (!check) {
             Integer salesRepId = Input.getNumberUserInput("Please, write the sales representative id:");
             for (SalesRep rep : salesRepList) {
