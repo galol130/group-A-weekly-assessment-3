@@ -35,6 +35,7 @@ public class Command {
 				if (command[1].equals("lead")) {
 					try {
 						Leadd newLeadd = new Leadd();
+						//leaddRepository.save(newLeadd);
 						System.out.println(ConsoleColors.WHITE_BRIGHT  +
 								"--> Lead created successfully with ID: " + newLeadd.getId() +
 								"  (Total Leads available: " + Data.getLeaddList().size() + ")");
