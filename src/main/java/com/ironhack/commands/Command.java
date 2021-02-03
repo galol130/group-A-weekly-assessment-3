@@ -2,10 +2,7 @@ package com.ironhack.commands;
 
 import com.ironhack.classes.Input;
 import com.ironhack.data.Data;
-import com.ironhack.model.Account;
-import com.ironhack.model.Contact;
-import com.ironhack.model.Leadd;
-import com.ironhack.model.Opportunity;
+import com.ironhack.model.*;
 import com.ironhack.repository.*;
 import com.ironhack.styles.ConsoleColors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +35,6 @@ public class Command {
 				if (command[1].equals("lead")) {
 					try {
 						Leadd newLeadd = new Leadd();
-						Data.getLeaddList().add(newLeadd);
 						System.out.println(ConsoleColors.WHITE_BRIGHT  +
 								"--> Lead created successfully with ID: " + newLeadd.getId() +
 								"  (Total Leads available: " + Data.getLeaddList().size() + ")");
@@ -48,6 +44,7 @@ public class Command {
 				} else if (command[1].equals("salesrep")) {
 					try {
 						// IMPLEMENTATION OF THE METHOD TO CREATE A NEW SALESREP
+						SalesRep newSalesRep = new SalesRep();
 					} catch (Exception e) {
 						System.out.println(ConsoleColors.RED_BOLD + "Couldn't save the SalesRep. Try again!");
 					}

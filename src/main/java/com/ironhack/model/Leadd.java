@@ -9,6 +9,10 @@ import javax.persistence.*;
 
 @Entity
 public class Leadd {
+
+    @Autowired
+    private SalesRepRepository salesRepRepository;
+
     @Id
     private Integer id;
     private String name;
@@ -83,8 +87,6 @@ public class Leadd {
         return salesRep;
     }
 
-    @Autowired
-    private SalesRepRepository salesRepRepository;
 
     public void setSalesRep() {
         boolean check = false;
@@ -97,7 +99,8 @@ public class Leadd {
                 }
             }
             if (!check) {
-                System.out.println(ConsoleColors.RED_BOLD + "The id typed does not belong to any sales representative. Try again!");
+                System.out.println(ConsoleColors.RED_BOLD
+                        + "The id typed does not belong to any sales representative. Try again!");
                 System.out.println(ConsoleColors.WHITE_BOLD);
             }
         }
