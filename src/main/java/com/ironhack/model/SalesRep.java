@@ -22,8 +22,7 @@ public class SalesRep {
     public SalesRep() {
     }
 
-    public SalesRep(Integer id, String name) {
-        this.id = id;
+    public SalesRep(String name) {
         this.name = name;
     }
 
@@ -42,4 +41,5 @@ public class SalesRep {
     public void setName(String name) {
         this.name = name;
     }
+
 }
