@@ -8,13 +8,14 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-class DataTest {
+class DataServiceTest {
 
     //We have tested the Lead related methods but these methods are tested just by using them, as they just show 2
     //messages depending on what the user has written. It is never something that would stop the application or
     // anything like that.
 
     private List<Leadd> leaddList = new ArrayList<>();
+    private DataService dataService;
 
     @BeforeEach
     public void setUp() {
@@ -22,7 +23,7 @@ class DataTest {
                         ,"invented company S.L."));
         leaddList.add(new Leadd(2, "Carles Puyol", "+34 65435631", "carles@puyi.com"
                         , "FC Barcelona"));
-        Data.setLeadList(leaddList);
+        dataService.setLeadList(leaddList);
     }
 
     @AfterEach
@@ -32,36 +33,36 @@ class DataTest {
 
     @Test
     void showLeads_LeadList_LeadsShownAppropriately() {
-        Data.showLeads();
+        dataService.showLeads();
     }
 
     @Test
     void showLeads_EmptyLeadList_ErrorMessage() {
         leaddList.clear();
-        Data.showLeads();
+        dataService.showLeads();
     }
 
     @Test
     void lookUpLead_ValidId_LeadShownAppropriately() {
-        Data.lookUpLead(2);
+        dataService.lookUpLead(2);
     }
 
     @Test
     void lookUpLead_WrongId_ErrorMessage() {
-        Data.lookUpLead(63);
+        dataService.lookUpLead(63);
     }
 
     @Test
     void deleteLead_Lead_CorrectlyRemoved() {
-        Data.showLeads();
-        Data.deleteLead(leaddList.get(1));
+        dataService.showLeads();
+        dataService.deleteLead(leaddList.get(1));
         System.out.println("Lead list after deleting the lead.");
-        Data.showLeads();
+        dataService.showLeads();
     }
 
     @Test
     void deleteLead_NotExistingLead_ErrorMessage() {
-        Data.deleteLead(new Leadd(4, "bla bla", "bla bla", "bla bla", "ble"));
+        dataService.deleteLead(new Leadd(4, "bla bla", "bla bla", "bla bla", "ble"));
     }
 
 }

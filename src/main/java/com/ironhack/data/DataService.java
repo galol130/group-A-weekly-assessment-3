@@ -6,30 +6,27 @@ import com.ironhack.model.*;
 import com.ironhack.repository.*;
 import com.ironhack.styles.ConsoleColors;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-@EnableJpaRepositories
-public class Data {
+
+@Service
+public class DataService {
 //  Repositories will be used to persist and retrieve data
     @Autowired
-    private static LeaddRepository leaddRepository;
-
+    private LeaddRepository leaddRepository;
     @Autowired
-    private static SalesRepRepository salesRepRepository;
-
+    private SalesRepRepository salesRepRepository;
     @Autowired
-    private static ContactRepository contactRepository;
-
+    private ContactRepository contactRepository;
     @Autowired
-    private static OpportunityRepository opportunityRepository;
-
+    private OpportunityRepository opportunityRepository;
     @Autowired
-    private static AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
 
 //  showSalesRep() will show a list of all sales representatives' ID and name. It just shows them on the console.
-    public static void showSalesRep() {
+    public void showSalesRep() {
         List<SalesRep> salesRepList = salesRepRepository.findAll();
         if (salesRepList.size() > 0) {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Sales Representatives:");
@@ -45,7 +42,7 @@ public class Data {
 
 
 //  showLeads() will show a list of all leads' ID, name and company. It just shows them on the console.
-    public static void showLeads() {
+    public void showLeads() {
         List<Leadd> leaddList = leaddRepository.findAll();
         if (leaddList.size() > 0) {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Leads:");
@@ -63,7 +60,7 @@ public class Data {
 //  lookUpLead will show all the details of a lead on the console. It just iterates through our list of leads and
 //  print the information whenever there is a coincidence of IDs. If there is no coincidence, it will show an
 //  error message.
-    public static void lookUpLead(int id) {
+    public void lookUpLead(int id) {
         List<Leadd> leaddList = leaddRepository.findAll();
         boolean check = false;
         for (Leadd leadd : leaddList) {
@@ -85,7 +82,7 @@ public class Data {
 //    }
 
     //Removes the desired lead
-    public static void deleteLead(Leadd leadd) {
+    public void deleteLead(Leadd leadd) {
         List<Leadd> leaddList = leaddRepository.findAll();
         if (leaddList.contains(leadd)) {
             leaddList.remove(leadd);
@@ -96,7 +93,7 @@ public class Data {
     }
 
 //  Looks for the opportunity and changes it's status accordingly to the user input
-    public static void changeOpportunityStatus(int id) {
+    public void changeOpportunityStatus(int id) {
         Opportunity opp = getOpportunityById(id);
         if(opp != null){
             String option = "";
@@ -124,7 +121,7 @@ public class Data {
     }
 
 //  Looks for an opportunity by id
-    public static Opportunity getOpportunityById(int id) {
+    public Opportunity getOpportunityById(int id) {
         List<Opportunity> opportunityList = opportunityRepository.findAll();
         Opportunity oppFound = null;
         for (Opportunity opp : opportunityList) {
@@ -135,7 +132,7 @@ public class Data {
         return oppFound;
     }
 
-    public static void showAccounts() {
+    public void showAccounts() {
         List<Account> accountList = accountRepository.findAll();
         if (accountList.size() > 0) {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Accounts: ");
@@ -148,7 +145,7 @@ public class Data {
         System.out.println(ConsoleColors.WHITE_BOLD);
     }
 
-    public static void showOpportunities() {
+    public void showOpportunities() {
         List<Opportunity> opportunityList = opportunityRepository.findAll();
         if (opportunityList.size() > 0) {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Opportunities:");
@@ -165,12 +162,12 @@ public class Data {
 //  DEBEN CAMBIARSE
 //  O MORIR EN EL INTETO
 
-    public static List<Leadd> getLeaddList() {
+    public List<Leadd> getLeaddList() {
         return leaddRepository.findAll();
     }
 
 //  Finds a Lead by id
-    public static Leadd getLeadById(Integer id) {
+    public Leadd getLeadById(Integer id) {
         List<Leadd> leaddList = leaddRepository.findAll();
         Leadd foundLeadd = null;
         for (Leadd leadd : leaddList) {
@@ -182,7 +179,7 @@ public class Data {
     }
 
     //  Finds a Account by id
-    public static Account getAccountById(Integer id) {
+    public Account getAccountById(Integer id) {
         List<Account> accountList = accountRepository.findAll();
         Account foundAccount = null;
         for (Account account : accountList) {
@@ -193,31 +190,35 @@ public class Data {
         return foundAccount;
     }
 
-    public static List<Opportunity> getOpportunityList() {
+    public List<Opportunity> getOpportunityList() {
         return opportunityRepository.findAll();
     }
 
-    public static List<Contact> getContactList() {
+    public List<Contact> getContactList() {
         return contactRepository.findAll();
     }
 
-    public static List<Account> getAccountList() {
+    public List<Account> getAccountList() {
         return accountRepository.findAll();
     }
 
-    public static void setLeadList(List<Leadd> leaddList) {
+    public void setLeadList(List<Leadd> leaddList) {
         leaddRepository.saveAll(leaddList);
     }
 
-    public static void setOpportunityList(List<Opportunity> opportunityList) {
+    public void setOpportunityList(List<Opportunity> opportunityList) {
        opportunityRepository.saveAll(opportunityList);
     }
 
-    public static void setContactList(List<Contact> contactList) {
+    public void setContactList(List<Contact> contactList) {
         contactRepository.saveAll(contactList);
     }
 
-    public static void setAccountList(List<Account> accountList) {
+    public void setAccountList(List<Account> accountList) {
         accountRepository.saveAll(accountList);
+    }
+
+    public void addLeadd(Leadd newLeadd) {
+        leaddRepository.save(newLeadd);
     }
 }
