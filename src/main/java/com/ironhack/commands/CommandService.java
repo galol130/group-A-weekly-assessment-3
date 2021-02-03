@@ -65,12 +65,68 @@ public class CommandService {
 				System.out.println(ConsoleColors.WHITE_BOLD);
 				System.exit(0);
 				break;
+			case "report":
+				reportCommand(command);
+				break;
 			default:
 				break;
 		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println(ConsoleColors.YELLOW_BOLD + "\nPress 'Enter' to continue");
 		sc.nextLine();
+	}
+
+//	reportCommand method calls for the appropriate query in each case.
+	private void reportCommand(String[] command) {
+		String input = "";
+
+		for (String string : command)
+			input = input.concat(string) + " ";
+		input = input.trim();
+
+		if (input.equals("report lead by salesrep"))  {
+
+		} else if (input.equals("report opportunity by salesrep")) {
+
+		} else if (input.equals("report closed-won by salesrep")) {
+
+		} else if (input.equals("report closed-lost by salesrep")) {
+
+		} else if (input.equals("report open by salesrep")) {
+
+		} else if (input.equals("report opportunity by product")) {
+
+		} else if (input.equals("report closed-won by product")) {
+
+		} else if (input.equals("report closed-lost by product")) {
+
+		} else if (input.equals("report open by product")) {
+
+		} else if (input.equals("report opportunity by country")) {
+
+		} else if (input.equals("report closed-won by country")) {
+
+		} else if (input.equals("report closed-lost by country")) {
+
+		} else if (input.equals("report open by country")) {
+
+		} else if (input.equals("report opportunity by city")) {
+
+		} else if (input.equals("report closed-won by city")) {
+
+		} else if (input.equals("report closed-lost by city")) {
+
+		} else if (input.equals("report open by city")) {
+
+		} else if (input.equals("report opportunity by industry")) {
+
+		} else if (input.equals("report closed-won by industry")) {
+
+		} else if (input.equals("report open by industry")) {
+
+		} else {
+			System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
+		}
 	}
 
 //		First it gets the Lead using the id. Then it creates contact using information in lead and add it to the list.
