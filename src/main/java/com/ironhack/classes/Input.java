@@ -184,6 +184,7 @@ public class Input {
             }
         }
 
+//      The method verifies that the email written contains an @ and a dot after that.
         public static String getEmailUserInput (String prompt){
             Scanner scanner = new Scanner(System.in);
             String userEmail;
@@ -206,8 +207,49 @@ public class Input {
             }
         }
 
-        //  The method takes the prompt (message) and the Enums as an array list
-//  (To do this, use '(String[]) Arrays.stream(<EnumeratorName>.values()).toArray()' when calling the method)
+//      This method verifies that the phone number is an actual number (it allows for a + sign at the beginning
+        public static String getPhoneUserInput (String prompt){
+            Scanner scanner = new Scanner(System.in);
+            String userPhone;
+
+            while (true) {
+                boolean check = false;
+                System.out.println(ConsoleColors.WHITE_BOLD + prompt);
+                userPhone = scanner.nextLine();
+                if (userPhone.charAt(0) == '+') {
+                    userPhone = userPhone.replace("+", "");
+                    String[] splitPhone = userPhone.split(" ");
+                    for (String s : splitPhone) {
+                        if (check) break;
+                        for (int i = 0; i < s.length(); i++) {
+                            if ((int) s.charAt(i) < 47 && (int) s.charAt(i) > 58) {
+                                check = true;
+                                break;
+                            }
+                        }
+                    }
+                    return userPhone.trim();
+                } else if (userPhone.charAt(0) != '+'){
+                    String[] splitPhone = userPhone.split(" ");
+                    for (String s : splitPhone) {
+                        if (check) break;
+                        for (int i = 0; i < s.length(); i++) {
+                            if ((int) s.charAt(i) < 47 && (int) s.charAt(i) > 58) {
+                                check = true;
+                                break;
+                            }
+                        }
+                    }
+                    return userPhone.trim();
+                } else {
+                    System.out.println(ConsoleColors.RED_BOLD + "Not a valid phone.");
+                    System.out.println(ConsoleColors.WHITE_BOLD);
+                }
+            }
+        }
+
+//      The method takes the prompt (message) and the Enums as an array list
+//      (To do this, use '(String[]) Arrays.stream(<EnumeratorName>.values()).toArray()' when calling the method)
         public static String getEnumUserInput (String prompt, String[]enumList){
             Scanner scanner = new Scanner(System.in);
             String userString;

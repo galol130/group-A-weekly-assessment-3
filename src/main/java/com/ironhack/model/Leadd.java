@@ -56,7 +56,7 @@ public class Leadd {
     }
 
     public void setPhoneNumber() {
-        this.phoneNumber = Input.getStringUserInput("Please, write the phone number:");
+        this.phoneNumber = Input.getPhoneUserInput("Please, write the phone number:");
     }
 
     public String getEmail() {
