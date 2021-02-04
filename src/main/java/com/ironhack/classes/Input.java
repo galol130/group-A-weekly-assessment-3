@@ -204,7 +204,7 @@ public class Input {
                             }
                         }
                     }
-                    if (!check) {
+                    if (!check && userPhone.length() > 9 && userPhone.length() < 13) {
                         return userPhone.trim();
                     } else {
                         System.out.println(ConsoleColors.RED_BOLD + "Not a valid phone.");
@@ -221,7 +221,7 @@ public class Input {
                             }
                         }
                     }
-                    if (!check) {
+                    if (!check && userPhone.length() > 8 && userPhone.length() < 12) {
                         return userPhone.trim();
                     } else {
                         System.out.println(ConsoleColors.RED_BOLD + "Not a valid phone.");
