@@ -204,49 +204,53 @@ public class CommandService {
     }
 
     //		First it gets the Lead using the id. Then it creates contact using information in lead and add it to the list.
-//		Then it creates opportunity with contact information. The other fields are asked by the class.
-// 		Then it creates an account and adds it to the list. Finally, the lead is deleted.
+
     public void convert(Integer id) {
         Optional<Leadd> leaddFetch = dataService.getLeadById(id);
         List<Account> accountList = dataService.getAccountList();
+        Account account;
+        Contact contact;
+        Opportunity opp;
+        SalesRep salesRep;
 
         if (leaddFetch.isPresent()) {
             Leadd leadd = leaddFetch.get();
-            Contact contact = new Contact(leadd.getName(), leadd.getPhoneNumber(), leadd.getEmail(), leadd.getCompanyName());
-            dataService.createContact(contact);
-            Opportunity opp = new Opportunity(contact);
-            dataService.createOpportunity(opp);
+            salesRep = leadd.getSalesRep();
+            contact = new Contact(leadd.getName(), leadd.getPhoneNumber(), leadd.getEmail(), leadd.getCompanyName());
+
             if (accountList.size() < 1) {
-                Account account = new Account(contact, opp);
-                dataService.createAccount(account);
+                account = new Account(contact);
             } else if (Input.getYesNoUserInput("Would you like to create a new Account?(Y/N)").equals("y")) {
-                Account account = new Account(contact, opp);
-                dataService.createAccount(account);
+                account = new Account(contact);
             } else {
                 while (true) {
                     for (Account acc : accountList) {
-                        System.out.println(ConsoleColors.WHITE_BRIGHT + acc.getId() +
-                                " | Industry: " + ConsoleColors.WHITE_BOLD + acc.getIndustry() +
-                                " | City: " + ConsoleColors.WHITE_BOLD + acc.getCity() +
-                                " | Country: " + ConsoleColors.WHITE_BOLD + acc.getCountry());
+                        System.out.println(ConsoleColors.WHITE_BRIGHT + "ID: " + acc.getId() + " | "
+                                + ConsoleColors.WHITE_BOLD +
+                                "Industry: " + acc.getIndustry() +
+                                ", City: " + acc.getCity() +
+                                ", Country: " + acc.getCountry());
                     }
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.println("Type an Account ID to associate the Contact and Opportunity");
-                    String input = scanner.nextLine().trim();
-                    if (Input.validIdFormat(input)) {
-                        Optional<Account> account = dataService.getAccountById(Integer.parseInt(input));
-                        if (account.isPresent()) {
-                            account.get().addContact(contact);
-                            account.get().addOpportunity(opp);
-                            dataService.updateAccount(account.get());
-                            break;
-                        }
-                        System.out.println("There is not any account with that ID.");
+                    Integer input = Input.getNumberUserInput("Type an Account ID to associate the Contact and Opportunity");
+                    Optional<Account> accountFetch = dataService.getAccountById(input);
+                    if (accountFetch.isPresent()) {
+                        account = accountFetch.get();
+                        break;
+                    } else {
+                        System.out.println(ConsoleColors.RED_BOLD + "There is not any account with that ID.");
+                        System.out.print(ConsoleColors.WHITE_BOLD);
                     }
                 }
             }
+            dataService.createAccount(account);
+            contact.setAccount(account);
+            dataService.createContact(contact);
+
+            opp = new Opportunity(contact, salesRep, account);
+            dataService.createOpportunity(opp);
+
             System.out.println(ConsoleColors.WHITE_BRIGHT + "--> Lead ID " + leadd.getId() + " converted successfully!");
-            System.out.println(ConsoleColors.WHITE_BOLD);
+            System.out.print(ConsoleColors.WHITE_BOLD);
             dataService.deleteLead(leadd);
         } else {
             System.out.println(ConsoleColors.RED_BOLD + "Error fetching the ID! Check the ID. If error persists, contact admin.");

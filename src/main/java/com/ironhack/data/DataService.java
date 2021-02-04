@@ -115,7 +115,7 @@ public class DataService {
         if (accountList.size() > 0) {
             System.out.println(ConsoleColors.WHITE_BRIGHT + "Accounts: ");
             for (Account acc : accountList) {
-                System.out.println(ConsoleColors.WHITE_BRIGHT + acc.getId() +
+                System.out.println(ConsoleColors.WHITE_BRIGHT + "ID: "+ acc.getId() +
                         " |" + ConsoleColors.WHITE_BOLD +
                         " Industry: " + acc.getIndustry() +
                         " Employees: " + acc.getEmployeeCount() +
@@ -131,16 +131,16 @@ public class DataService {
                             " Status: " + opp.getStatus()
                     );
                 }
-                System.out.println(ConsoleColors.WHITE_BRIGHT + "\t Contacts: ");
-                for (Contact contact : acc.getContactList()) {
-                    System.out.println(ConsoleColors.WHITE_BRIGHT + "\t\t" + contact.getId() +
-                            " |" + ConsoleColors.WHITE_BOLD +
-                            " Company: " + contact.getCompanyName() +
-                            " Name: " + contact.getName() +
-                            " Email: " + contact.getEmail() +
-                            " Phone: " + contact.getPhoneNumber()
-                    );
-                }
+//                System.out.println(ConsoleColors.WHITE_BRIGHT + "\t Contacts: ");
+//                for (Contact contact : acc.getContactList()) {
+//                    System.out.println(ConsoleColors.WHITE_BRIGHT + "\t\t" + contact.getId() +
+//                            " |" + ConsoleColors.WHITE_BOLD +
+//                            " Company: " + contact.getCompanyName() +
+//                            " Name: " + contact.getName() +
+//                            " Email: " + contact.getEmail() +
+//                            " Phone: " + contact.getPhoneNumber()
+//                    );
+//                }
             }
         } else {
             System.out.println(ConsoleColors.RED_BOLD + "No accounts created yet!");
