@@ -19,15 +19,15 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     @Query("SELECT MIN(employeeCount) FROM Account")
     public Integer findMinEmployeeCount();
 
-    @Query(value = "SELECT AVG(oppos) FROM (SELECT COUNT(o) oppos FROM account a JOIN opportunity o ON o.account_id = a.id) AS tbl"
+    @Query(value = "SELECT AVG(oppos) FROM (SELECT COUNT(*) oppos FROM account a JOIN opportunity o ON o.account_id = a.id) AS tbl"
             , nativeQuery = true)
     public Integer findAvgNumberOfOpportunities();
 
-    @Query(value = "SELECT MAX(oppos) FROM (SELECT COUNT(o) oppos FROM account a JOIN opportunity o ON o.account_id = a.id) AS tbl"
+    @Query(value = "SELECT MAX(oppos) FROM (SELECT COUNT(*) oppos FROM account a JOIN opportunity o ON o.account_id = a.id) AS tbl"
             , nativeQuery = true)
     public Integer findMaxNumberOfOpportunities();
 
-    @Query(value = "SELECT MIN(oppos) FROM (SELECT COUNT(o) oppos FROM account a JOIN opportunity o ON o.account_id = a.id) AS tbl"
+    @Query(value = "SELECT MIN(oppos) FROM (SELECT COUNT(*) oppos FROM account a JOIN opportunity o ON o.account_id = a.id) AS tbl"
             , nativeQuery = true)
     public Integer findMinNumberOfOpportunities();
 
