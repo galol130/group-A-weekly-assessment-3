@@ -64,7 +64,7 @@ public class Leadd {
     }
 
     public void setEmail() {
-        this.email = Input.getStringUserInput("Please, write the email:");
+        this.email = Input.getEmailUserInput("Please, write the email:");
     }
 
     public String getCompanyName() {
