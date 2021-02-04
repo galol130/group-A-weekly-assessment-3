@@ -198,28 +198,35 @@ public class Input {
                     for (String s : splitPhone) {
                         if (check) break;
                         for (int i = 0; i < s.length(); i++) {
-                            if ((int) s.charAt(i) < 47 && (int) s.charAt(i) > 58) {
+                            if ((int) s.charAt(i) < 47 || (int) s.charAt(i) > 58) {
                                 check = true;
                                 break;
                             }
                         }
                     }
-                    return userPhone.trim();
-                } else if (userPhone.charAt(0) != '+'){
+                    if (!check) {
+                        return userPhone.trim();
+                    } else {
+                        System.out.println(ConsoleColors.RED_BOLD + "Not a valid phone.");
+                        System.out.println(ConsoleColors.WHITE_BOLD);
+                    }
+                } else {
                     String[] splitPhone = userPhone.split(" ");
                     for (String s : splitPhone) {
                         if (check) break;
                         for (int i = 0; i < s.length(); i++) {
-                            if ((int) s.charAt(i) < 47 && (int) s.charAt(i) > 58) {
+                            if ((int) s.charAt(i) < 47 || (int) s.charAt(i) > 58) {
                                 check = true;
                                 break;
                             }
                         }
                     }
-                    return userPhone.trim();
-                } else {
-                    System.out.println(ConsoleColors.RED_BOLD + "Not a valid phone.");
-                    System.out.println(ConsoleColors.WHITE_BOLD);
+                    if (!check) {
+                        return userPhone.trim();
+                    } else {
+                        System.out.println(ConsoleColors.RED_BOLD + "Not a valid phone.");
+                        System.out.println(ConsoleColors.WHITE_BOLD);
+                    }
                 }
             }
         }
@@ -234,11 +241,19 @@ public class Input {
                 userEmail = scanner.nextLine();
                 if (userEmail.contains("@")) {
                     String[] splitEmail = userEmail.split("@");
-                    if (splitEmail.length == 2) {
+                    if (splitEmail.length == 2 && !splitEmail[0].isEmpty()) {
                         String[] splitDottedEmail = splitEmail[1].split("\\.");
-                            if (splitDottedEmail.length == 2) {
+                            if (splitDottedEmail.length == 2 && !splitDottedEmail[0].isEmpty()) {
                                 return userEmail.trim();
                             }
+                            else {
+                                System.out.println(ConsoleColors.RED_BOLD + "Not a valid email.");
+                                System.out.println(ConsoleColors.WHITE_BOLD);
+                            }
+                    }
+                    else {
+                        System.out.println(ConsoleColors.RED_BOLD + "Not a valid email.");
+                        System.out.println(ConsoleColors.WHITE_BOLD);
                     }
                 } else {
                     System.out.println(ConsoleColors.RED_BOLD + "Not a valid email.");
