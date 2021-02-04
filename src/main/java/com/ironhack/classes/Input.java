@@ -14,7 +14,7 @@ public class Input {
 
         while (true) {
             System.out.println(ConsoleColors.YELLOW_BOLD + "\nType a command:");
-            System.out.println(ConsoleColors.WHITE_BOLD);
+            System.out.print(ConsoleColors.WHITE_BOLD);
             command = scanner.nextLine().toLowerCase().trim();
             commandSplit = command.split(" ");
 //          Validates if the command is ok and doesn't require an [id]
@@ -24,6 +24,8 @@ public class Input {
                     || command.equals("show accounts")
                     || command.equals("show opps")
                     || command.equals("show salesrep")
+                    || command.equals("reporting")
+                    || command.equals("stats")
                     || command.equals("exit")) {
                 return commandSplit;
             } else if (commandSplit.length == 2
@@ -41,173 +43,214 @@ public class Input {
 //              Here must validate id is a number;
                 if (validIdFormat(commandSplit[2]))
                     return commandSplit;
-            } else if (commandSplit.length == 4 &&
-                    commandSplit[0].equals("report")) {
-                if (report(command))
-                    return commandSplit;
-            } else if (commandSplit[0].equals("mean") || commandSplit[0].equals("median") ||
-                    commandSplit[0].equals("max") || commandSplit[0].equals("min")) {
-                if (statistics(command))
-                    return commandSplit;
             } else {
 //              Command is not correct
                 System.out.println(ConsoleColors.RED_BOLD + "The command typed does not match any available one. Try again!");
-                System.out.println(ConsoleColors.WHITE_BOLD);
+                System.out.print(ConsoleColors.WHITE_BOLD);
             }
         }
     }
 
-    private static boolean statistics(String command) {
+        public static String[] getValidReportCommand () {
+            Scanner scanner = new Scanner(System.in);
+            String command;
+            String[] commandSplit;
 
-        if (command.equals("mean employeecount")
-                || (command.equals("median employeecount"))
-                || (command.equals("max employeecount"))
-                || (command.equals("min employeecount"))
-                || (command.equals("mean quantity"))
-                || (command.equals("median quantity"))
-                || (command.equals("max quantity"))
-                || (command.equals("min quantity"))
-                || (command.equals("mean opps per account"))
-                || (command.equals("median opps per account"))
-                || (command.equals("max opps per account"))
-                || (command.equals("min opps per account"))) {
-            return true;
-        } else {
-            System.out.println("Not a valid statistics request.");
-            return false;
+            while (true) {
+                System.out.println(ConsoleColors.YELLOW_BOLD + "\nType a command:");
+                System.out.print(ConsoleColors.WHITE_BOLD);
+                command = scanner.nextLine().toLowerCase().trim();
+                commandSplit = command.split(" ");
+
+                if(commandSplit[0].equalsIgnoreCase("menu"))
+                    return commandSplit;
+                if (commandSplit.length == 3) {
+                    if (report(command))
+                        return commandSplit;
+                }else {
+//              Command is not correct
+                    System.out.println(ConsoleColors.RED_BOLD + "The command typed does not match any available one. Try again!");
+                    System.out.print(ConsoleColors.WHITE_BOLD);
+                }
+            }
         }
-    }
 
-    //Validates if it's a valid report
-    private static boolean report(String input) {
+        public static String[] getValidStatsCommand () {
+            Scanner scanner = new Scanner(System.in);
+            String command;
+            String[] commandSplit;
 
-        if (input.equals("report lead by salesrep")
-                || input.equals("report opportunity by salesrep")
-                || input.equals("report closed-won by salesrep")
-                || input.equals("report closed-lost by salesrep")
-                || input.equals("report open by salesrep")
-                || input.equals("report opportunity by product")
-                || input.equals("report closed-won by product")
-                || input.equals("report closed-lost by product")
-                || input.equals("report open by product")
-                || input.equals("report opportunity by country")
-                || input.equals("report closed-won by country")
-                || input.equals("report closed-lost by country")
-                || input.equals("report open by country")
-                || input.equals("report opportunity by city")
-                || input.equals("report closed-won by city")
-                || input.equals("report closed-lost by city")
-                || input.equals("report open by city")
-                || input.equals("report opportunity by industry")
-                || input.equals("report closed-won by industry")
-                || input.equals("report open by industry")) {
-            return true;
-        } else {
-            System.out.println("Not a valid report.");
-            return false;
+            while (true) {
+                System.out.println(ConsoleColors.YELLOW_BOLD + "\nType a command:");
+                System.out.print(ConsoleColors.WHITE_BOLD);
+                command = scanner.nextLine().toLowerCase().trim();
+                commandSplit = command.split(" ");
+
+                if(commandSplit[0].equalsIgnoreCase("menu"))
+                    return commandSplit;
+                if (commandSplit[0].equals("mean") || commandSplit[0].equals("median") ||
+                        commandSplit[0].equals("max") || commandSplit[0].equals("min")) {
+                    if (statistics(command))
+                        return commandSplit;
+                }else {
+//              Command is not correct
+                    System.out.println(ConsoleColors.RED_BOLD + "The command typed does not match any available one. Try again!");
+                    System.out.print(ConsoleColors.WHITE_BOLD);
+                }
+            }
         }
-    }
 
-//    Validates if Id is a positive integer
-    public static boolean validIdFormat(String stringId) {
-        try {
-            int numId = Integer.parseInt(stringId);
-            if (numId <= 0) {
-                System.out.println(ConsoleColors.RED_BOLD + "Number must be positive.");
-                System.out.println(ConsoleColors.WHITE_BOLD);
+        private static boolean statistics (String command){
+
+            if (command.equalsIgnoreCase("mean employeecount")
+                    || (command.equalsIgnoreCase("median employeecount"))
+                    || (command.equalsIgnoreCase("max employeecount"))
+                    || (command.equalsIgnoreCase("min employeecount"))
+                    || (command.equalsIgnoreCase("mean quantity"))
+                    || (command.equalsIgnoreCase("median quantity"))
+                    || (command.equalsIgnoreCase("max quantity"))
+                    || (command.equalsIgnoreCase("min quantity"))
+                    || (command.equalsIgnoreCase("mean opps per account"))
+                    || (command.equalsIgnoreCase("median opps per account"))
+                    || (command.equalsIgnoreCase("max opps per account"))
+                    || (command.equalsIgnoreCase("min opps per account"))) {
+                return true;
+            } else {
+                System.out.println("Not a valid statistics request.");
                 return false;
             }
-            return true;
-        } catch (Exception e) {
-            System.out.println(ConsoleColors.RED_BOLD + "Error: An integer was expected as an Id");
         }
-        return false;
-    }
 
-//      The method takes the prompt (message) and returns the user input as a String
-    public static String getStringUserInput(String prompt) {
-        Scanner scanner = new Scanner(System.in);
-        String userString;
+        //Validates if it's a valid report
+        private static boolean report (String input){
 
-        while (true) {
-            System.out.println(ConsoleColors.WHITE_BOLD + prompt);
-            userString = scanner.nextLine();
-            if (userString.trim().length() > 0) {
-                return userString.trim();
+            if (input.equalsIgnoreCase("report lead by salesrep")
+                    || input.equalsIgnoreCase("report opportunity by salesrep")
+                    || input.equalsIgnoreCase("report closed-won by salesrep")
+                    || input.equalsIgnoreCase("report closed-lost by salesrep")
+                    || input.equalsIgnoreCase("report open by salesrep")
+                    || input.equalsIgnoreCase("report opportunity by product")
+                    || input.equalsIgnoreCase("report closed-won by product")
+                    || input.equalsIgnoreCase("report closed-lost by product")
+                    || input.equalsIgnoreCase("report open by product")
+                    || input.equalsIgnoreCase("report opportunity by country")
+                    || input.equalsIgnoreCase("report closed-won by country")
+                    || input.equalsIgnoreCase("report closed-lost by country")
+                    || input.equalsIgnoreCase("report open by country")
+                    || input.equalsIgnoreCase("report opportunity by city")
+                    || input.equalsIgnoreCase("report closed-won by city")
+                    || input.equalsIgnoreCase("report closed-lost by city")
+                    || input.equalsIgnoreCase("report open by city")
+                    || input.equalsIgnoreCase("report opportunity by industry")
+                    || input.equalsIgnoreCase("report closed-won by industry")
+                    || input.equalsIgnoreCase("report open by industry")) {
+                return true;
             } else {
-                System.out.println(ConsoleColors.RED_BOLD + "Not a valid input.");
-                System.out.println(ConsoleColors.WHITE_BOLD);
+                System.out.println("Not a valid report.");
+                return false;
             }
         }
-    }
 
-//  The method takes the prompt (message) and the Enums as an array list
-//  (To do this, use '(String[]) Arrays.stream(<EnumeratorName>.values()).toArray()' when calling the method)
-    public static String getEnumUserInput(String prompt, String[] enumList) {
-        Scanner scanner = new Scanner(System.in);
-        String userString;
-
-        while (true) {
-            System.out.println(ConsoleColors.WHITE_BOLD);
-            System.out.println(prompt);
-            for (String enumElement : enumList) {
-                System.out.println("\t" + enumElement);
-            }
-            userString = scanner.nextLine().trim().toUpperCase();
-            for (String enumElement : enumList) {
-                if (userString.equals(enumElement)) {
-                    return enumElement;
-                }
-            }
-            System.out.println(ConsoleColors.RED_BOLD + "Not a valid input. Try again.");
-            System.out.println(ConsoleColors.WHITE_BOLD);
-        }
-    }
-
-//      The method takes the prompt (message) and returns the user input as an int or catches a exception if it isn't
-    public static int getNumberUserInput(String prompt) {
-        Scanner scanner = new Scanner(System.in);
-        String str = "";
-        int result = 0;
-
-        while (str.length() < 1) {
-            System.out.println(prompt);
-            str = scanner.nextLine();
+        //    Validates if Id is a positive integer
+        public static boolean validIdFormat (String stringId){
             try {
-                result = Integer.parseInt(str);
-                if (result < 0) {
+                int numId = Integer.parseInt(stringId);
+                if (numId <= 0) {
                     System.out.println(ConsoleColors.RED_BOLD + "Number must be positive.");
                     System.out.println(ConsoleColors.WHITE_BOLD);
+                    return false;
+                }
+                return true;
+            } catch (Exception e) {
+                System.out.println(ConsoleColors.RED_BOLD + "Error: An integer was expected as an Id");
+            }
+            return false;
+        }
+
+        //      The method takes the prompt (message) and returns the user input as a String
+        public static String getStringUserInput (String prompt){
+            Scanner scanner = new Scanner(System.in);
+            String userString;
+
+            while (true) {
+                System.out.println(ConsoleColors.WHITE_BOLD + prompt);
+                userString = scanner.nextLine();
+                if (userString.trim().length() > 0) {
+                    return userString.trim();
+                } else {
+                    System.out.println(ConsoleColors.RED_BOLD + "Not a valid input.");
+                    System.out.println(ConsoleColors.WHITE_BOLD);
+                }
+            }
+        }
+
+        //  The method takes the prompt (message) and the Enums as an array list
+//  (To do this, use '(String[]) Arrays.stream(<EnumeratorName>.values()).toArray()' when calling the method)
+        public static String getEnumUserInput (String prompt, String[]enumList){
+            Scanner scanner = new Scanner(System.in);
+            String userString;
+
+            while (true) {
+                System.out.println(ConsoleColors.WHITE_BOLD);
+                System.out.println(prompt);
+                for (String enumElement : enumList) {
+                    System.out.println("\t" + enumElement);
+                }
+                userString = scanner.nextLine().trim().toUpperCase();
+                for (String enumElement : enumList) {
+                    if (userString.equals(enumElement)) {
+                        return enumElement;
+                    }
+                }
+                System.out.println(ConsoleColors.RED_BOLD + "Not a valid input. Try again.");
+                System.out.println(ConsoleColors.WHITE_BOLD);
+            }
+        }
+
+        //      The method takes the prompt (message) and returns the user input as an int or catches a exception if it isn't
+        public static int getNumberUserInput (String prompt){
+            Scanner scanner = new Scanner(System.in);
+            String str = "";
+            int result = 0;
+
+            while (str.length() < 1) {
+                System.out.println(prompt);
+                str = scanner.nextLine();
+                try {
+                    result = Integer.parseInt(str);
+                    if (result < 0) {
+                        System.out.println(ConsoleColors.RED_BOLD + "Number must be positive.");
+                        System.out.println(ConsoleColors.WHITE_BOLD);
+                        str = "";
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println(ConsoleColors.RED_BOLD + "You must type a number.");
+                    System.out.println(ConsoleColors.WHITE_BOLD);
+                    str = "";
+                } catch (Exception e) {
+                    System.out.println(ConsoleColors.RED_BOLD + "Something was wrong.");
                     str = "";
                 }
-            } catch (NumberFormatException e) {
-                System.out.println(ConsoleColors.RED_BOLD + "You must type a number.");
-                System.out.println(ConsoleColors.WHITE_BOLD);
-                str = "";
-            } catch (Exception e) {
-                System.out.println(ConsoleColors.RED_BOLD + "Something was wrong.");
-                str = "";
             }
+            return result;
         }
-        return result;
-    }
 
-    //      The method takes the prompt (message) and returns the user input (yes or no) as a String
-    public static String getYesNoUserInput(String prompt) {
-        Scanner scanner = new Scanner(System.in);
-        String userString;
+        //      The method takes the prompt (message) and returns the user input (yes or no) as a String
+        public static String getYesNoUserInput (String prompt){
+            Scanner scanner = new Scanner(System.in);
+            String userString;
 
-        while (true) {
-            System.out.println(prompt);
-            userString = scanner.nextLine();
-            if (userString.trim().equalsIgnoreCase("y") || userString.trim().equalsIgnoreCase("yes")) {
-                return "y";
-            } else if (userString.trim().equalsIgnoreCase("n") || userString.trim().equalsIgnoreCase("no")) {
-                return "n";
-            } else {
-                System.out.println(ConsoleColors.RED_BOLD + "Not a valid input.");
-                System.out.println(ConsoleColors.WHITE_BOLD);
+            while (true) {
+                System.out.println(prompt);
+                userString = scanner.nextLine();
+                if (userString.trim().equalsIgnoreCase("y") || userString.trim().equalsIgnoreCase("yes")) {
+                    return "y";
+                } else if (userString.trim().equalsIgnoreCase("n") || userString.trim().equalsIgnoreCase("no")) {
+                    return "n";
+                } else {
+                    System.out.println(ConsoleColors.RED_BOLD + "Not a valid input.");
+                    System.out.println(ConsoleColors.WHITE_BOLD);
+                }
             }
         }
     }
-}
