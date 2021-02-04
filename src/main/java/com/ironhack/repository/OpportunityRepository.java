@@ -13,6 +13,9 @@ import java.util.List;
 public interface OpportunityRepository extends JpaRepository<Opportunity, Integer> {
     public List<Opportunity> findByAccountId (Integer id);
 
+    @Query("SELECT AVG(quantity) FROM Opportunity o WHERE o.status = com.ironhack.enums.Status.CLOSED_WON")
+    public Integer findAvgProductsOrdered();
+
     @Query("SELECT MAX(quantity) FROM Opportunity o WHERE o.status = com.ironhack.enums.Status.CLOSED_WON")
     public Integer findMaxProductsOrdered();
 
