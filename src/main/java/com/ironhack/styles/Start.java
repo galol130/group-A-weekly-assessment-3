@@ -1,14 +1,31 @@
 package com.ironhack.styles;
 
 public class Start {
+    public static void printNewVersion() {
+        printStart();
+        System.out.println(ConsoleColors.PURPLE_BOLD_BRIGHT + "\n\tTired of typing all the data once and again?" +
+                ConsoleColors.PURPLE_BOLD_BRIGHT + "\n\tCan't find aggregate information?"
+        );
+        System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT + "\n\tThe solution is here!!!" +
+                ConsoleColors.YELLOW_BOLD + "\n\tIntroducing our brand new CRM v1.2 with Database persistence and new features:" +
+                ConsoleColors.WHITE_BRIGHT + "\n\t**  Sales representatives management  **" +
+                ConsoleColors.WHITE_BRIGHT + "\n\t**  + 20 Reporting functionalities  **" +
+                ConsoleColors.WHITE_BRIGHT + "\n\t**  + 10 Statistics  **" +
+                ConsoleColors.WHITE_BRIGHT + "\n\t**  'Show accounts' display the opportunities and contacts for each account  **" +
+                ConsoleColors.WHITE_BRIGHT + "\n\tand much more..." +
+
+                ConsoleColors.BLUE_BOLD + "\n\n Press 'Enter' to continue to the Main Menu"
+        );
+    }
+
     // The following method prints a welcome screen and sets console colors.
     public static void printStart() {
-        int titleLength = 29;
+        int titleLength = 31;
         System.out.println(ConsoleColors.BLUE);
         for (int i = 0; i < titleLength; i++) {
             System.out.print("==");
         }
-        System.out.println("\n|\tE.M.O.F.  CUSTOMER RELATIONSHIP MANAGEMENT SYSTEM \t |");
+        System.out.println("\n|\tE.M.O.F.  CUSTOMER RELATIONSHIP MANAGEMENT SYSTEM v1.2 \t |");
         for (int i = 0; i < titleLength; i++) {
             System.out.print("==");
         }
@@ -16,7 +33,7 @@ public class Start {
     }
 
     public static void printMenuV1() {
-        System.out.println("\nWelcome, please write one of the following:\n" +
+        System.out.println("\nWelcome, please type one of the following:\n" +
                 ConsoleColors.BLUE + "Leads\n" + ConsoleColors.WHITE_BOLD +
                 "\tWrite: 'New lead' to enter a new lead record.\n" +
                 "\tWrite: 'Show leads' to view all current leads.\n" +
@@ -31,7 +48,8 @@ public class Start {
     }
 
     public static void printMenuV2() {
-        System.out.println("Welcome, please type one of the following commands:\n" +
+        System.out.println("Welcome again!" +
+                "\nPlease type one of the following commands (not case-sensitive):\n" +
                 ConsoleColors.BLUE + "Sales Representatives\n" + ConsoleColors.WHITE_BOLD +
                 ConsoleColors.WHITE_BRIGHT + "\tNew salesRep" + ConsoleColors.WHITE_BOLD + " to enter a new sales representative.\n" +
                 ConsoleColors.WHITE_BRIGHT + "\tShow salesRep" + ConsoleColors.WHITE_BOLD + " to view all current leads.\n" +

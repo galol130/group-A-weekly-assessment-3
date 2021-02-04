@@ -122,25 +122,27 @@ public class DataService {
                         " City: " + acc.getCity() +
                         " Country: " + acc.getCountry()
                 );
-                System.out.println(ConsoleColors.WHITE_BRIGHT + "\t Opportunities: ");
-                for (Opportunity opp : acc.getOpportunityList()) {
-                    System.out.println(ConsoleColors.WHITE_BRIGHT + "\t\t" + opp.getId() +
+                List<Opportunity> opportunities = opportunityRepository.findByAccountId(acc.getId());
+                System.out.println(ConsoleColors.BLUE + "\t Opportunities: ");
+                for (Opportunity opp : opportunities) {
+                    System.out.println(ConsoleColors.WHITE_BRIGHT + "\t\tID: " + opp.getId() +
                             " |" + ConsoleColors.WHITE_BOLD +
                             " Product: " + opp.getProduct() +
-                            " Qty: " + opp.getQuantity() +
-                            " Status: " + opp.getStatus()
+                            ", Qty: " + opp.getQuantity() +
+                            ", Status: " + opp.getStatus()
                     );
                 }
-//                System.out.println(ConsoleColors.WHITE_BRIGHT + "\t Contacts: ");
-//                for (Contact contact : acc.getContactList()) {
-//                    System.out.println(ConsoleColors.WHITE_BRIGHT + "\t\t" + contact.getId() +
-//                            " |" + ConsoleColors.WHITE_BOLD +
-//                            " Company: " + contact.getCompanyName() +
-//                            " Name: " + contact.getName() +
-//                            " Email: " + contact.getEmail() +
-//                            " Phone: " + contact.getPhoneNumber()
-//                    );
-//                }
+                List<Contact> contacts = contactRepository.findByAccountId(acc.getId());
+                System.out.println(ConsoleColors.BLUE + "\t Contacts: ");
+                for (Contact contact : contacts) {
+                    System.out.println(ConsoleColors.WHITE_BRIGHT + "\t\tID: " + contact.getId() +
+                            " |" + ConsoleColors.WHITE_BOLD +
+                            " Company: " + contact.getCompanyName() +
+                            ", Name: " + contact.getName() +
+                            ", Email: " + contact.getEmail() +
+                            ", Phone: " + contact.getPhoneNumber()
+                    );
+                }
             }
         } else {
             System.out.println(ConsoleColors.RED_BOLD + "No accounts created yet!");

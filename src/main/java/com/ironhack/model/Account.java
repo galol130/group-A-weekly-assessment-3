@@ -3,6 +3,7 @@ package com.ironhack.model;
 import com.ironhack.classes.Input;
 import com.ironhack.enums.Industry;
 import com.ironhack.styles.ConsoleColors;
+import org.hibernate.annotations.IndexColumn;
 
 import javax.persistence.*;
 import java.util.ArrayList;

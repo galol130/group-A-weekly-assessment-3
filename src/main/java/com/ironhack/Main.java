@@ -20,6 +20,10 @@ public class Main implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+//      Print the new version features
+        Start.printNewVersion();
+        Input.getEnterToContinue();
+
         while (true) {
 //      Print the system header:
             Start.printStart();

@@ -316,4 +316,10 @@ public class Input {
                 }
             }
         }
+
+//  Gets and dismisses whatever the users type. It's intended to catch "Press 'Enter' to continue"
+    public static void getEnterToContinue() {
+        Scanner scanner = new Scanner(System.in);
+        String userString = scanner.nextLine();
     }
+}
