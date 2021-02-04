@@ -2,14 +2,15 @@ package com.ironhack.model;
 
 import com.ironhack.classes.Input;
 import com.ironhack.styles.ConsoleColors;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Leadd {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String phoneNumber;
@@ -21,14 +22,6 @@ public class Leadd {
     private SalesRep salesRep;
 
     public Leadd() {
-    }
-
-    public Leadd(List<SalesRep> salesRepList) {
-        setName();
-        setPhoneNumber();
-        setEmail();
-        setCompanyName();
-        setSalesRep(salesRepList);
     }
 
     //This constructor is only created for the sake of the tests. Has no use in the project besides that.

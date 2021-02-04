@@ -20,9 +20,9 @@ public class Account {
     private int employeeCount;
     private String city;
     private String country;
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<Contact> contactList;
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<Opportunity> opportunityList;
 
     public Account() {
@@ -113,8 +113,8 @@ public class Account {
                 "  |  Industry: " + industry +
                 ", EmployeeCount: " + employeeCount +
                 ", City: " + city +
-                ", Country: " + country +
-                ", Number of Contacts: " + contactList.size() +
-                ", Number of Opportunities: " + opportunityList.size();
+                ", Country: " + country;
+//                ", Number of Contacts: " + this.getContactList().size();
+//                ", Number of Opportunities: " + this.getOpportunityList().size();
     }
 }

@@ -21,8 +21,8 @@ public class SalesRep {
     @OneToMany(mappedBy = "salesRep")
     private List<Opportunity> opportunities;
 
+
     public SalesRep() {
-        setName();
     }
 
     public SalesRep(String name) {
@@ -42,7 +42,7 @@ public class SalesRep {
     }
 
     public void setName() {
-        this.name = Input.getStringUserInput("Please, write the name:");
+        this.name = Input.getStringUserInput("Please, write the sales representative's name:");
     }
 
 }

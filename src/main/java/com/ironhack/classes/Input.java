@@ -23,6 +23,7 @@ public class Input {
                     || command.equals("show leads")
                     || command.equals("show accounts")
                     || command.equals("show opps")
+                    || command.equals("show salesrep")
                     || command.equals("exit")) {
                 return commandSplit;
             } else if (commandSplit.length == 2
@@ -140,9 +141,9 @@ public class Input {
         while (true) {
             System.out.println(prompt);
             userString = scanner.nextLine();
-            if (userString.trim().toLowerCase().equals("y") || userString.trim().toLowerCase().equals("yes")) {
+            if (userString.trim().equalsIgnoreCase("y") || userString.trim().equalsIgnoreCase("yes")) {
                 return "y";
-            } else if (userString.trim().toLowerCase().equals("n") || userString.trim().toLowerCase().equals("no")) {
+            } else if (userString.trim().equalsIgnoreCase("n") || userString.trim().equalsIgnoreCase("no")) {
                 return "n";
             } else {
                 System.out.println(ConsoleColors.RED_BOLD + "Not a valid input.");

@@ -28,8 +28,6 @@ public class Opportunity {
     @JoinColumn(name = "account_id")
     private Account account;
 
-
-
     public Opportunity() {
     }
 

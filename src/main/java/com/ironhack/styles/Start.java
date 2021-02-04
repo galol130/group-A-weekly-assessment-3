@@ -32,6 +32,9 @@ public class Start {
 
     public static void printMenuV2(){
         System.out.println("Welcome, please type one of the following commands:\n" +
+                ConsoleColors.BLUE + "Sales Representatives\n" + ConsoleColors.WHITE_BOLD +
+                ConsoleColors.WHITE_BRIGHT + "\tNew salesRep"+ ConsoleColors.WHITE_BOLD +" to enter a new sales representative.\n" +
+                ConsoleColors.WHITE_BRIGHT + "\tShow salesRep"+ ConsoleColors.WHITE_BOLD +" to view all current leads.\n" +
                 ConsoleColors.BLUE + "Leads\n" + ConsoleColors.WHITE_BOLD +
                 ConsoleColors.WHITE_BRIGHT + "\tNew lead"+ ConsoleColors.WHITE_BOLD +" to enter a new lead record.\n" +
                 ConsoleColors.WHITE_BRIGHT + "\tShow leads"+ ConsoleColors.WHITE_BOLD +" to view all current leads.\n" +
