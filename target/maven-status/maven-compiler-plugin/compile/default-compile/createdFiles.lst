@@ -10,10 +10,8 @@ com/ironhack/Main.class
 com/ironhack/enums/Product.class
 com/ironhack/repository/LeaddRepository.class
 com/ironhack/repository/OpportunityRepository.class
-com/ironhack/data/Data.class
 com/ironhack/repository/ContactRepository.class
 com/ironhack/model/Contact.class
 com/ironhack/model/Leadd.class
-com/ironhack/commands/Command.class
 com/ironhack/enums/Status.class
 com/ironhack/styles/Start.class

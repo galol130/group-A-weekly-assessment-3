@@ -184,6 +184,28 @@ public class Input {
             }
         }
 
+        public static String getEmailUserInput (String prompt){
+            Scanner scanner = new Scanner(System.in);
+            String userEmail;
+
+            while (true) {
+                System.out.println(ConsoleColors.WHITE_BOLD + prompt);
+                userEmail = scanner.nextLine();
+                if (userEmail.contains("@")) {
+                    String[] splitEmail = userEmail.split("@");
+                    if (splitEmail.length == 2) {
+                        String[] splitDottedEmail = splitEmail[1].split("\\.");
+                            if (splitDottedEmail.length == 2) {
+                                return userEmail.trim();
+                            }
+                    }
+                } else {
+                    System.out.println(ConsoleColors.RED_BOLD + "Not a valid email.");
+                    System.out.println(ConsoleColors.WHITE_BOLD);
+                }
+            }
+        }
+
         //  The method takes the prompt (message) and the Enums as an array list
 //  (To do this, use '(String[]) Arrays.stream(<EnumeratorName>.values()).toArray()' when calling the method)
         public static String getEnumUserInput (String prompt, String[]enumList){
