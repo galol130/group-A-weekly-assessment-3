@@ -281,8 +281,8 @@ public class Input {
                 str = scanner.nextLine();
                 try {
                     result = Integer.parseInt(str);
-                    if (result < 0) {
-                        System.out.println(ConsoleColors.RED_BOLD + "Number must be positive.");
+                    if (result < 1) {
+                        System.out.println(ConsoleColors.RED_BOLD + "Number must be positive and not null.");
                         System.out.println(ConsoleColors.WHITE_BOLD);
                         str = "";
                     }

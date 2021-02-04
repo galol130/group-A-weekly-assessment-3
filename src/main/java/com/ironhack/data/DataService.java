@@ -91,15 +91,21 @@ public class DataService {
                         ConsoleColors.WHITE_BOLD + "to close the Opportunity and change its status.").toLowerCase();
             }
             if (option.equals("won")) {
-                oppFetch.get().setStatus(Status.CLOSED_WON);
-                System.out.println(ConsoleColors.WHITE_BRIGHT + "--> Opportunity " + id + "set as 'Closed-Won'.");
-                System.out.println(ConsoleColors.WHITE_BOLD);
+                try {
+                    oppFetch.get().setStatus(Status.CLOSED_WON);
+                    System.out.println(ConsoleColors.WHITE_BRIGHT + "--> Opportunity " + id + " set as 'Closed-Won'.");
+                    System.out.println(ConsoleColors.WHITE_BOLD);
+                }catch (Exception e){
+                    System.out.println(ConsoleColors.RED_BOLD + "Sorry, we couldn't make the changes in our database.");
+                    System.out.println(ConsoleColors.WHITE_BOLD);
+                }
             }
             if (option.equals("lost")) {
                 oppFetch.get().setStatus(Status.CLOSED_LOST);
                 System.out.println(ConsoleColors.WHITE_BRIGHT + "--> Opportunity " + id + " set as 'Closed-Lost'.");
                 System.out.println(ConsoleColors.WHITE_BOLD);
             }
+            opportunityRepository.save(oppFetch.get());
         } else {
             System.out.println(ConsoleColors.RED_BOLD + "Sorry, we can't find this ID in our database.");
             System.out.println(ConsoleColors.WHITE_BOLD);
