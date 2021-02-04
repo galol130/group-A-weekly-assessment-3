@@ -193,9 +193,9 @@ public class Input {
                 userEmail = scanner.nextLine();
                 if (userEmail.contains("@")) {
                     String[] splitEmail = userEmail.split("@");
-                    if (splitEmail.length < 3) {
-                        splitEmail = userEmail.split("\\.");
-                            if (splitEmail.length < 3) {
+                    if (splitEmail.length == 2) {
+                        String[] splitDottedEmail = splitEmail[1].split("\\.");
+                            if (splitDottedEmail.length == 2) {
                                 return userEmail.trim();
                             }
                     }
