@@ -81,16 +81,115 @@ public class CommandService {
                 System.out.println(ConsoleColors.WHITE_BOLD);
                 System.exit(0);
                 break;
-            default:
-                break;
-        }
+			case "report":
+				reportCommand(command);
+				break;
+			case "mean":
+			case "min":
+			case "median":
+			case "max":
+				statistics(command);
+				break;
+			default:
+				break;
+		}
 
         Scanner sc = new Scanner(System.in);
         System.out.println(ConsoleColors.YELLOW_BOLD + "\nPress 'Enter' to continue");
         sc.nextLine();
     }
 
-    //		First it gets the Lead using the id. Then it creates contact using information in lead and add it to the list.
+//	This method calls for the appropriate query in each case.
+	private void statistics(String[] command) {
+		String input = "";
+
+		for (String string : command)
+			input = input.concat(string) + " ";
+		input = input.trim();
+
+		if (input.equals("mean employeecount")) {
+
+		} else if (input.equals("median employeecount")) {
+
+		} else if (input.equals("max employeecount")) {
+
+		} else if (input.equals("min employeecount")) {
+
+		} else if (input.equals("mean quantity")) {
+
+		} else if (input.equals("median quantity")) {
+
+		} else if (input.equals("max quantity")) {
+
+		} else if (input.equals("min quantity")) {
+
+		} else if (input.equals("mean opps per account")) {
+
+		} else if (input.equals("median opps per account")) {
+
+		} else if (input.equals("max opps per account")) {
+
+		} else if (input.equals("min opps per account")) {
+
+		} else {
+			System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
+		}
+	}
+
+//	reportCommand method calls for the appropriate query in each case.
+	private void reportCommand(String[] command) {
+		String input = "";
+
+		for (String string : command)
+			input = input.concat(string) + " ";
+		input = input.trim();
+
+		if (input.equals("report lead by salesrep"))  {
+
+		} else if (input.equals("report opportunity by salesrep")) {
+
+		} else if (input.equals("report closed-won by salesrep")) {
+
+		} else if (input.equals("report closed-lost by salesrep")) {
+
+		} else if (input.equals("report open by salesrep")) {
+
+		} else if (input.equals("report opportunity by product")) {
+
+		} else if (input.equals("report closed-won by product")) {
+
+		} else if (input.equals("report closed-lost by product")) {
+
+		} else if (input.equals("report open by product")) {
+
+		} else if (input.equals("report opportunity by country")) {
+
+		} else if (input.equals("report closed-won by country")) {
+
+		} else if (input.equals("report closed-lost by country")) {
+
+		} else if (input.equals("report open by country")) {
+
+		} else if (input.equals("report opportunity by city")) {
+
+		} else if (input.equals("report closed-won by city")) {
+
+		} else if (input.equals("report closed-lost by city")) {
+
+		} else if (input.equals("report open by city")) {
+
+		} else if (input.equals("report opportunity by industry")) {
+
+		} else if (input.equals("report closed-won by industry")) {
+
+		} else if (input.equals("report open by industry")) {
+
+		} else {
+			System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
+		}
+	}
+
+//		First it gets the Lead using the id. Then it creates contact using information in lead and add it to the list.
 //		Then it creates opportunity with contact information. The other fields are asked by the class.
 // 		Then it creates an account and adds it to the list. Finally, the lead is deleted.
     public void convert(Integer id) {

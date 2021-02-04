@@ -41,6 +41,14 @@ public class Input {
 //              Here must validate id is a number;
                 if (validIdFormat(commandSplit[2]))
                     return commandSplit;
+            } else if (commandSplit.length == 4 &&
+                    commandSplit[0].equals("report")) {
+                if (report(command))
+                    return commandSplit;
+            } else if (commandSplit[0].equals("mean") || commandSplit[0].equals("median") ||
+                    commandSplit[0].equals("max") || commandSplit[0].equals("min")) {
+                if (statistics(command))
+                    return commandSplit;
             } else {
 //              Command is not correct
                 System.out.println(ConsoleColors.RED_BOLD + "The command typed does not match any available one. Try again!");
@@ -49,7 +57,58 @@ public class Input {
         }
     }
 
-    //    Validates if Id is a positive integer
+    private static boolean statistics(String command) {
+
+        if (command.equals("mean employeecount")
+                || (command.equals("median employeecount"))
+                || (command.equals("max employeecount"))
+                || (command.equals("min employeecount"))
+                || (command.equals("mean quantity"))
+                || (command.equals("median quantity"))
+                || (command.equals("max quantity"))
+                || (command.equals("min quantity"))
+                || (command.equals("mean opps per account"))
+                || (command.equals("median opps per account"))
+                || (command.equals("max opps per account"))
+                || (command.equals("min opps per account"))) {
+            return true;
+        } else {
+            System.out.println("Not a valid statistics request.");
+            return false;
+        }
+    }
+
+    //Validates if it's a valid report
+    private static boolean report(String input) {
+
+        if (input.equals("report lead by salesrep")
+                || input.equals("report opportunity by salesrep")
+                || input.equals("report closed-won by salesrep")
+                || input.equals("report closed-lost by salesrep")
+                || input.equals("report open by salesrep")
+                || input.equals("report opportunity by product")
+                || input.equals("report closed-won by product")
+                || input.equals("report closed-lost by product")
+                || input.equals("report open by product")
+                || input.equals("report opportunity by country")
+                || input.equals("report closed-won by country")
+                || input.equals("report closed-lost by country")
+                || input.equals("report open by country")
+                || input.equals("report opportunity by city")
+                || input.equals("report closed-won by city")
+                || input.equals("report closed-lost by city")
+                || input.equals("report open by city")
+                || input.equals("report opportunity by industry")
+                || input.equals("report closed-won by industry")
+                || input.equals("report open by industry")) {
+            return true;
+        } else {
+            System.out.println("Not a valid report.");
+            return false;
+        }
+    }
+
+//    Validates if Id is a positive integer
     public static boolean validIdFormat(String stringId) {
         try {
             int numId = Integer.parseInt(stringId);
@@ -65,7 +124,7 @@ public class Input {
         return false;
     }
 
-    //      The method takes the prompt (message) and returns the user input as a String
+//      The method takes the prompt (message) and returns the user input as a String
     public static String getStringUserInput(String prompt) {
         Scanner scanner = new Scanner(System.in);
         String userString;
@@ -82,7 +141,7 @@ public class Input {
         }
     }
 
-    //  The method takes the prompt (message) and the Enums as an array list
+//  The method takes the prompt (message) and the Enums as an array list
 //  (To do this, use '(String[]) Arrays.stream(<EnumeratorName>.values()).toArray()' when calling the method)
     public static String getEnumUserInput(String prompt, String[] enumList) {
         Scanner scanner = new Scanner(System.in);
@@ -105,7 +164,7 @@ public class Input {
         }
     }
 
-    //      The method takes the prompt (message) and returns the user input as an int or catches a exception if it isn't
+//      The method takes the prompt (message) and returns the user input as an int or catches a exception if it isn't
     public static int getNumberUserInput(String prompt) {
         Scanner scanner = new Scanner(System.in);
         String str = "";
