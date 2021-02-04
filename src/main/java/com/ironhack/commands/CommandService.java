@@ -211,9 +211,11 @@ public class CommandService {
         Account account;
         Contact contact;
         Opportunity opp;
+        SalesRep salesRep;
 
         if (leaddFetch.isPresent()) {
             Leadd leadd = leaddFetch.get();
+            salesRep = leadd.getSalesRep();
             contact = new Contact(leadd.getName(), leadd.getPhoneNumber(), leadd.getEmail(), leadd.getCompanyName());
 
             if (accountList.size() < 1) {
@@ -223,10 +225,11 @@ public class CommandService {
             } else {
                 while (true) {
                     for (Account acc : accountList) {
-                        System.out.println(ConsoleColors.WHITE_BRIGHT + acc.getId() +
-                                " | Industry: " + ConsoleColors.WHITE_BOLD + acc.getIndustry() +
-                                " | City: " + ConsoleColors.WHITE_BOLD + acc.getCity() +
-                                " | Country: " + ConsoleColors.WHITE_BOLD + acc.getCountry());
+                        System.out.println(ConsoleColors.WHITE_BRIGHT + "ID: " + acc.getId() + " | "
+                                + ConsoleColors.WHITE_BOLD +
+                                "Industry: " + acc.getIndustry() +
+                                ", City: " + acc.getCity() +
+                                ", Country: " + acc.getCountry());
                     }
                     Integer input = Input.getNumberUserInput("Type an Account ID to associate the Contact and Opportunity");
                     Optional<Account> accountFetch = dataService.getAccountById(input);
@@ -234,7 +237,8 @@ public class CommandService {
                         account = accountFetch.get();
                         break;
                     } else {
-                        System.out.println("There is not any account with that ID.");
+                        System.out.println(ConsoleColors.RED_BOLD + "There is not any account with that ID.");
+                        System.out.print(ConsoleColors.WHITE_BOLD);
                     }
                 }
             }
@@ -242,11 +246,11 @@ public class CommandService {
             contact.setAccount(account);
             dataService.createContact(contact);
 
-            opp = new Opportunity(contact, leadd.getSalesRep(), account);
+            opp = new Opportunity(contact, salesRep, account);
             dataService.createOpportunity(opp);
 
             System.out.println(ConsoleColors.WHITE_BRIGHT + "--> Lead ID " + leadd.getId() + " converted successfully!");
-            System.out.println(ConsoleColors.WHITE_BOLD);
+            System.out.print(ConsoleColors.WHITE_BOLD);
             dataService.deleteLead(leadd);
         } else {
             System.out.println(ConsoleColors.RED_BOLD + "Error fetching the ID! Check the ID. If error persists, contact admin.");
