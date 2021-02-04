@@ -28,13 +28,11 @@ public class Account {
     public Account() {
     }
 
-    public Account(Contact contact, Opportunity opportunity) {
+    public Account(Contact contact) {
         setIndustry();
         setEmployeeCount();
         setCity();
         setCountry();
-        setContactList(contact);
-        setOpportunityList(opportunity);
     }
 
     public void addContact(Contact contact) {
@@ -96,15 +94,7 @@ public class Account {
         this.country = Input.getStringUserInput("Please, write the country of the Company:");
     }
 
-    public void setContactList(Contact contact) {
-        this.contactList = new ArrayList<>();
-        this.contactList.add(contact);
-    }
 
-    public void setOpportunityList(Opportunity opportunity) {
-        this.opportunityList = new ArrayList<>();
-        this.opportunityList.add(opportunity);
-    }
 
     @Override
     public String toString() {

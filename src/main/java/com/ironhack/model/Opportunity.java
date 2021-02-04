@@ -31,11 +31,13 @@ public class Opportunity {
     public Opportunity() {
     }
 
-    public Opportunity(Contact decisionMaker) {
+    public Opportunity(Contact decisionMaker, SalesRep salesRep, Account account) {
         setProduct();
         setQuantity();
         setDecisionMaker(decisionMaker);
         setStatus(Status.OPEN);
+        setSalesRep(salesRep);
+        setAccount(account);
     }
 
     public Opportunity(Product product, int quantity, Contact decisionMaker, Status status) {
@@ -86,6 +88,30 @@ public class Opportunity {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public SalesRep getSalesRep() {
+        return salesRep;
+    }
+
+    public void setSalesRep(SalesRep salesRep) {
+        this.salesRep = salesRep;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override

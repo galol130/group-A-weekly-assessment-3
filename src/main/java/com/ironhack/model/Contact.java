@@ -67,5 +67,13 @@ public class Contact {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }
 
