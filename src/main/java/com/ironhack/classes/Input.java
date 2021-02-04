@@ -194,7 +194,10 @@ public class Input {
                 if (userEmail.contains("@")) {
                     String[] splitEmail = userEmail.split("@");
                     if (splitEmail.length < 3) {
-                        return userEmail;
+                        splitEmail = userEmail.split("\\.");
+                            if (splitEmail.length < 3) {
+                                return userEmail.trim();
+                            }
                     }
                 } else {
                     System.out.println(ConsoleColors.RED_BOLD + "Not a valid email.");
