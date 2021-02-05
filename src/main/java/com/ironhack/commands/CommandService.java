@@ -108,6 +108,9 @@ public class CommandService {
                     } else {
                         reportCommand(reportCommand);
                     }
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println(ConsoleColors.YELLOW_BOLD + "\n-> PRESS 'ENTER' TO CONTINUE <-");
+                    sc.nextLine();
                 }
                 break;
             case "stats":
@@ -119,6 +122,9 @@ public class CommandService {
                     } else {
                         statisticsCommand(statsCommand);
                     }
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println(ConsoleColors.YELLOW_BOLD + "\n-> PRESS 'ENTER' TO CONTINUE <-");
+                    sc.nextLine();
                 }
                 break;
             default:
