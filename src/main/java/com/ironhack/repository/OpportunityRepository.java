@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface OpportunityRepository extends JpaRepository<Opportunity, Integer> {
 
-    @Query("SELECT s.id, COUNT(*) FROM Opportunity o JOIN SalesRep s ON o.salesRep = s.id GROUP BY s.id")
+    @Query("SELECT s.name, COUNT(*) FROM Opportunity o JOIN SalesRep s ON o.salesRep = s.id GROUP BY s.id")
     public List<Object[]> findBySalesRep();
 
     @Query("SELECT o.product, COUNT(*) FROM Opportunity o GROUP BY o.product")

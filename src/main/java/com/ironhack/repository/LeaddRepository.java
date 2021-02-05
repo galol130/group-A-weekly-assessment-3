@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface LeaddRepository extends JpaRepository<Leadd, Integer> {
 
-	@Query("SELECT COUNT(l) FROM Leadd l JOIN SalesRep s ON l.salesRep = s.id GROUP BY s.id")
+	@Query("SELECT s.name, COUNT(l) FROM Leadd l JOIN SalesRep s ON l.salesRep = s.id GROUP BY s.id")
 	public List<Object[]> findBySalesRep();
 }
