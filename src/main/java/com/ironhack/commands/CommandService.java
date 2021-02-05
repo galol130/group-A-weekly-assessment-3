@@ -149,25 +149,25 @@ public class CommandService {
         } else if (input.equals("median employeecount")) {
             result = Math.round(accountRepository.findAvgEmployeeCount());
         } else if (input.equals("max employeecount")) {
-            result = accountRepository.findMaxEmployeeCount();
+            result = Math.round(accountRepository.findMaxEmployeeCount());
         } else if (input.equals("min employeecount")) {
-            result = accountRepository.findMinEmployeeCount();
+            result = Math.round(accountRepository.findMinEmployeeCount());
         } else if (input.equals("mean quantity")) {
             result = opportunityRepository.findAvgProductsOrdered();
         } else if (input.equals("median quantity")) {
             result = Math.round(opportunityRepository.findAvgProductsOrdered());
         } else if (input.equals("max quantity")) {
-            result = opportunityRepository.findMaxProductsOrdered();
+            result = Math.round(opportunityRepository.findMaxProductsOrdered());
         } else if (input.equals("min quantity")) {
-            result = opportunityRepository.findMinProductsOrdered();
+            result = Math.round(opportunityRepository.findMinProductsOrdered());
         } else if (input.equals("mean opps per account")) {
             result = accountRepository.findAvgNumberOfOpportunities();
         } else if (input.equals("median opps per account")) {
             result = Math.round(accountRepository.findAvgNumberOfOpportunities());
         } else if (input.equals("max opps per account")) {
-            result = accountRepository.findMaxNumberOfOpportunities();
+            result = Math.round(accountRepository.findMaxNumberOfOpportunities());
         } else if (input.equals("min opps per account")) {
-            result = accountRepository.findMinNumberOfOpportunities();
+            result = Math.round(accountRepository.findMinNumberOfOpportunities());
         } else {
             System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
         }
