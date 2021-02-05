@@ -29,6 +29,14 @@ public class Account {
     public Account() {
     }
 
+    // Constructor for testing purposes
+    public Account(Industry industry, int employeeCount, String city, String country) {
+        this.industry = industry;
+        this.employeeCount = employeeCount;
+        this.city = city;
+        this.country = country;
+    }
+
     public Account(Contact contact) {
         setIndustry();
         setEmployeeCount();

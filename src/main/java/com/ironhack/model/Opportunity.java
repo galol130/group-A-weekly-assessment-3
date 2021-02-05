@@ -40,6 +40,16 @@ public class Opportunity {
         setAccount(account);
     }
 
+    // Constructor for testing purposes only
+    public Opportunity(Product product, int quantity, Contact decisionMaker, Status status, SalesRep salesRep, Account account) {
+        this.product = product;
+        this.quantity = quantity;
+        this.decisionMaker = decisionMaker;
+        this.status = status;
+        this.salesRep = salesRep;
+        this.account = account;
+    }
+
     public Opportunity(Product product, int quantity, Contact decisionMaker, Status status) {
         this.product = product;
         this.quantity = quantity;

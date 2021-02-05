@@ -25,8 +25,7 @@ public class Leadd {
     }
 
     //This constructor is only created for the sake of the tests. Has no use in the project besides that.
-    public Leadd(Integer id, String name, String phoneNumber, String email, String companyName) {
-        this.id = id;
+    public Leadd(String name, String phoneNumber, String email, String companyName) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
