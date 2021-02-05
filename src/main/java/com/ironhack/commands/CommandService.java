@@ -171,7 +171,7 @@ public class CommandService {
     //	reportCommand method calls for the appropriate query in each case.
     private void reportCommand(String[] command) {
         String input = "";
-        Integer result;
+        List<Object[]> result = null;
 
         for (String string : command)
             input = input.concat(string) + " ";
@@ -219,6 +219,13 @@ public class CommandService {
 
         } else {
             System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
+        }
+
+        for (Object[] objects : result) {
+            for (int i = 0; i < objects.length; i++) {
+                System.out.print(objects[i] + " ");
+            }
+            System.out.println("");
         }
     }
 
