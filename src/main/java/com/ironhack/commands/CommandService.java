@@ -132,39 +132,40 @@ public class CommandService {
     //	This method calls for the appropriate query in each case.
     private void statisticsCommand(String[] command) {
         String input = "";
-        Integer result;
+        Integer result = 0;
 
         for (String string : command)
             input = input.concat(string) + " ";
         input = input.trim();
 
         if (input.equals("mean employeecount")) {
-
+            result = accountRepository.findAvgEmployeeCount();
         } else if (input.equals("median employeecount")) {
 
         } else if (input.equals("max employeecount")) {
-
+            result = accountRepository.findMaxEmployeeCount();
         } else if (input.equals("min employeecount")) {
-
+            result = accountRepository.findMinEmployeeCount();
         } else if (input.equals("mean quantity")) {
-
+            result = opportunityRepository.findAvgProductsOrdered();
         } else if (input.equals("median quantity")) {
 
         } else if (input.equals("max quantity")) {
-
+            result = opportunityRepository.findMaxProductsOrdered();
         } else if (input.equals("min quantity")) {
-
+            result = opportunityRepository.findMinProductsOrdered();
         } else if (input.equals("mean opps per account")) {
-
+            result = accountRepository.findAvgNumberOfOpportunities();
         } else if (input.equals("median opps per account")) {
 
         } else if (input.equals("max opps per account")) {
-
+            result = accountRepository.findMaxNumberOfOpportunities();
         } else if (input.equals("min opps per account")) {
-
+            result = accountRepository.findMinNumberOfOpportunities();
         } else {
             System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
         }
+        System.out.println("The result is: " + result);
     }
 
     //	reportCommand method calls for the appropriate query in each case.
