@@ -13,20 +13,20 @@ import java.util.List;
 @Repository
 public interface OpportunityRepository extends JpaRepository<Opportunity, Integer> {
 
-    @Query("SELECT COUNT(*) FROM Opportunity o JOIN SalesRep s ON o.salesRep = s.id GROUP BY s.id")
-    public Integer findBySalesRep();
+    @Query("SELECT s.id, COUNT(*) FROM Opportunity o JOIN SalesRep s ON o.salesRep = s.id GROUP BY s.id")
+    public List<Object[]> findBySalesRep();
 
-    @Query("SELECT COUNT(*) FROM Opportunity o GROUP BY o.product")
-    public Integer findByProduct();
+    @Query("SELECT o.product, COUNT(*) FROM Opportunity o GROUP BY o.product")
+    public List<Object[]> findByProduct();
 
-    @Query("SELECT COUNT(*) FROM Opportunity o JOIN Account a ON o.account = a.id GROUP BY a.country")
-    public Integer findByCountry();
+    @Query("SELECT a.country, COUNT(*) FROM Opportunity o JOIN Account a ON o.account = a.id GROUP BY a.country")
+    public List<Object[]> findByCountry();
 
-    @Query("SELECT COUNT(*) FROM Opportunity o JOIN Account a ON o.account = a.id GROUP BY a.city")
-    public Integer findByCity();
+    @Query("SELECT a.city, COUNT(*) FROM Opportunity o JOIN Account a ON o.account = a.id GROUP BY a.city")
+    public List<Object[]> findByCity();
 
-    @Query("SELECT COUNT(*) FROM Opportunity o JOIN Account a ON o.account = a.id GROUP BY a.industry")
-    public Integer findByIndustry();
+    @Query("SELECT a.industry, COUNT(*) FROM Opportunity o JOIN Account a ON o.account = a.id GROUP BY a.industry")
+    public List<Object[]> findByIndustry();
 
     public List<Opportunity> findByAccountId (Integer id);
 
