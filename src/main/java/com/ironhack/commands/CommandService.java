@@ -189,41 +189,41 @@ public class CommandService {
         } else if (input.equals("opportunity by salesrep")) {
             result = opportunityRepository.findBySalesRep();
         } else if (input.equals("closed-won by salesrep")) {
-
+            result = opportunityRepository.findClosedWonBySalesRep();
         } else if (input.equals("closed-lost by salesrep")) {
-
+            result = opportunityRepository.findClosedLostBySalesRep();
         } else if (input.equals("open by salesrep")) {
-
+            result = opportunityRepository.findOpenBySalesRep();
         } else if (input.equals("opportunity by product")) {
             result = opportunityRepository.findByProduct();
         } else if (input.equals("closed-won by product")) {
-
+            result = opportunityRepository.findClosedWonByProduct();
         } else if (input.equals("closed-lost by product")) {
-
+            result = opportunityRepository.findClosedLostByProduct();
         } else if (input.equals("open by product")) {
-
+            result = opportunityRepository.findOpenByProduct();
         } else if (input.equals("opportunity by country")) {
             result = opportunityRepository.findByCountry();
         } else if (input.equals("closed-won by country")) {
-
+            result = opportunityRepository.findClosedWonByCountry();
         } else if (input.equals("closed-lost by country")) {
-
+            result = opportunityRepository.findClosedLostByCountry();
         } else if (input.equals("open by country")) {
-
+            result = opportunityRepository.findOpenByCountry();
         } else if (input.equals("opportunity by city")) {
             result = opportunityRepository.findByCity();
         } else if (input.equals("closed-won by city")) {
-
+            result = opportunityRepository.findClosedWonByCity();
         } else if (input.equals("closed-lost by city")) {
-
+            result = opportunityRepository.findClosedLostByCity();
         } else if (input.equals("open by city")) {
-
+            result = opportunityRepository.findOpenByCity();
         } else if (input.equals("opportunity by industry")) {
             result = opportunityRepository.findByIndustry();
         } else if (input.equals("closed-won by industry")) {
-
+            result = opportunityRepository.findClosedWonByIndustry();
         } else if (input.equals("open by industry")) {
-
+            result = opportunityRepository.findClosedWonByIndustry();
         } else {
             System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
         }

@@ -123,27 +123,27 @@ public class Input {
 
         //Validates if it's a valid report
         private static boolean report (String input){
-
             if (input.equalsIgnoreCase("lead by salesrep")
-                    || input.equalsIgnoreCase("opportunity by salesrep")
-                    || input.equalsIgnoreCase("closed-won by salesrep")
-                    || input.equalsIgnoreCase("closed-lost by salesrep")
-                    || input.equalsIgnoreCase("open by salesrep")
-                    || input.equalsIgnoreCase("opportunity by product")
-                    || input.equalsIgnoreCase("closed-won by product")
-                    || input.equalsIgnoreCase("closed-lost by product")
-                    || input.equalsIgnoreCase("open by product")
-                    || input.equalsIgnoreCase("opportunity by country")
-                    || input.equalsIgnoreCase("closed-won by country")
-                    || input.equalsIgnoreCase("closed-lost by country")
-                    || input.equalsIgnoreCase("open by country")
-                    || input.equalsIgnoreCase("opportunity by city")
-                    || input.equalsIgnoreCase("closed-won by city")
-                    || input.equalsIgnoreCase("closed-lost by city")
-                    || input.equalsIgnoreCase("open by city")
-                    || input.equalsIgnoreCase("opportunity by industry")
-                    || input.equalsIgnoreCase("closed-won by industry")
-                    || input.equalsIgnoreCase("open by industry")) {
+                || input.equalsIgnoreCase("opportunity by salesrep")
+                || input.equalsIgnoreCase("closed-won by salesrep")
+                || input.equalsIgnoreCase("closed-lost by salesrep")
+                || input.equalsIgnoreCase("open by salesrep")
+                || input.equalsIgnoreCase("opportunity by product")
+                || input.equalsIgnoreCase("closed-won by product")
+                || input.equalsIgnoreCase("closed-lost by product")
+                || input.equalsIgnoreCase("open by product")
+                || input.equalsIgnoreCase("opportunity by country")
+                || input.equalsIgnoreCase("closed-won by country")
+                || input.equalsIgnoreCase("closed-lost by country")
+                || input.equalsIgnoreCase("open by country")
+                || input.equalsIgnoreCase("opportunity by city")
+                || input.equalsIgnoreCase("closed-won by city")
+                || input.equalsIgnoreCase("closed-lost by city")
+                || input.equalsIgnoreCase("open by city")
+                || input.equalsIgnoreCase("opportunity by industry")
+                || input.equalsIgnoreCase("closed-won by industry")
+                || input.equalsIgnoreCase("closed-lost by industry")
+                || input.equalsIgnoreCase("open by industry")) {
                 return true;
             } else {
                 System.out.println("Not a valid report.");
