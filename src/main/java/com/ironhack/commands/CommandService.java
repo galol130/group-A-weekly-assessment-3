@@ -176,46 +176,47 @@ public class CommandService {
         for (String string : command)
             input = input.concat(string) + " ";
         input = input.trim();
+        System.out.println(input);
 
-        if (input.equals("report lead by salesrep")) {
+        if (input.equals("lead by salesrep")) {
             result = leaddRepository.findBySalesRep();
-        } else if (input.equals("report opportunity by salesrep")) {
+        } else if (input.equals("opportunity by salesrep")) {
             result = opportunityRepository.findBySalesRep();
-        } else if (input.equals("report closed-won by salesrep")) {
+        } else if (input.equals("closed-won by salesrep")) {
 
-        } else if (input.equals("report closed-lost by salesrep")) {
+        } else if (input.equals("closed-lost by salesrep")) {
 
-        } else if (input.equals("report open by salesrep")) {
+        } else if (input.equals("open by salesrep")) {
 
-        } else if (input.equals("report opportunity by product")) {
+        } else if (input.equals("opportunity by product")) {
             result = opportunityRepository.findByProduct();
-        } else if (input.equals("report closed-won by product")) {
+        } else if (input.equals("closed-won by product")) {
 
-        } else if (input.equals("report closed-lost by product")) {
+        } else if (input.equals("closed-lost by product")) {
 
-        } else if (input.equals("report open by product")) {
+        } else if (input.equals("open by product")) {
 
-        } else if (input.equals("report opportunity by country")) {
+        } else if (input.equals("opportunity by country")) {
             result = opportunityRepository.findByCountry();
-        } else if (input.equals("report closed-won by country")) {
+        } else if (input.equals("closed-won by country")) {
 
-        } else if (input.equals("report closed-lost by country")) {
+        } else if (input.equals("closed-lost by country")) {
 
-        } else if (input.equals("report open by country")) {
+        } else if (input.equals("open by country")) {
 
-        } else if (input.equals("report opportunity by city")) {
+        } else if (input.equals("opportunity by city")) {
             result = opportunityRepository.findByCity();
-        } else if (input.equals("report closed-won by city")) {
+        } else if (input.equals("closed-won by city")) {
 
-        } else if (input.equals("report closed-lost by city")) {
+        } else if (input.equals("closed-lost by city")) {
 
-        } else if (input.equals("report open by city")) {
+        } else if (input.equals("open by city")) {
 
-        } else if (input.equals("report opportunity by industry")) {
+        } else if (input.equals("opportunity by industry")) {
             result = opportunityRepository.findByIndustry();
-        } else if (input.equals("report closed-won by industry")) {
+        } else if (input.equals("closed-won by industry")) {
 
-        } else if (input.equals("report open by industry")) {
+        } else if (input.equals("open by industry")) {
 
         } else {
             System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
