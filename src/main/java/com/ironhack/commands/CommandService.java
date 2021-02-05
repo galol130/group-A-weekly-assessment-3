@@ -138,7 +138,7 @@ public class CommandService {
     //	This method calls for the appropriate query in each case.
     private void statisticsCommand(String[] command) {
         String input = "";
-        Integer result = 0;
+        double result = 0.;
 
         for (String string : command)
             input = input.concat(string) + " ";
@@ -147,7 +147,7 @@ public class CommandService {
         if (input.equals("mean employeecount")) {
             result = accountRepository.findAvgEmployeeCount();
         } else if (input.equals("median employeecount")) {
-            result = (int) accountRepository.findAvgEmployeeCount();
+            result = Math.round(accountRepository.findAvgEmployeeCount());
         } else if (input.equals("max employeecount")) {
             result = accountRepository.findMaxEmployeeCount();
         } else if (input.equals("min employeecount")) {
@@ -155,7 +155,7 @@ public class CommandService {
         } else if (input.equals("mean quantity")) {
             result = opportunityRepository.findAvgProductsOrdered();
         } else if (input.equals("median quantity")) {
-            result = (int) opportunityRepository.findAvgProductsOrdered();
+            result = Math.round(opportunityRepository.findAvgProductsOrdered());
         } else if (input.equals("max quantity")) {
             result = opportunityRepository.findMaxProductsOrdered();
         } else if (input.equals("min quantity")) {
@@ -163,7 +163,7 @@ public class CommandService {
         } else if (input.equals("mean opps per account")) {
             result = accountRepository.findAvgNumberOfOpportunities();
         } else if (input.equals("median opps per account")) {
-            result = (int) accountRepository.findAvgNumberOfOpportunities();
+            result = Math.round(accountRepository.findAvgNumberOfOpportunities());
         } else if (input.equals("max opps per account")) {
             result = accountRepository.findMaxNumberOfOpportunities();
         } else if (input.equals("min opps per account")) {

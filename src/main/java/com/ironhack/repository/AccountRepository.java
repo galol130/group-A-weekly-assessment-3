@@ -11,7 +11,7 @@ import java.util.List;
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
     @Query("SELECT AVG(employeeCount) FROM Account")
-    public Integer findAvgEmployeeCount();
+    public Double findAvgEmployeeCount();
 
     @Query("SELECT MAX(employeeCount) FROM Account")
     public Integer findMaxEmployeeCount();
@@ -21,7 +21,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
 
     @Query(value = "SELECT AVG(oppos) FROM (SELECT COUNT(*) oppos FROM account a JOIN opportunity o ON o.account_id = a.id) AS tbl"
             , nativeQuery = true)
-    public Integer findAvgNumberOfOpportunities();
+    public Double findAvgNumberOfOpportunities();
 
     @Query(value = "SELECT MAX(oppos) FROM (SELECT COUNT(*) oppos FROM account a JOIN opportunity o ON o.account_id = a.id) AS tbl"
             , nativeQuery = true)

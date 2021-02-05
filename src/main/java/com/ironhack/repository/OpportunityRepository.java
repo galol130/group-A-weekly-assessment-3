@@ -77,7 +77,7 @@ public interface OpportunityRepository extends JpaRepository<Opportunity, Intege
     public List<Object[]> findClosedLostByIndustry();
 
     @Query("SELECT AVG(quantity) FROM Opportunity o WHERE o.status = com.ironhack.enums.Status.CLOSED_WON")
-    public Integer findAvgProductsOrdered();
+    public Double findAvgProductsOrdered();
 
     @Query("SELECT MAX(quantity) FROM Opportunity o WHERE o.status = com.ironhack.enums.Status.CLOSED_WON")
     public Integer findMaxProductsOrdered();
