@@ -3,6 +3,7 @@ package com.ironhack.commands;
 import com.ironhack.classes.Input;
 import com.ironhack.data.DataService;
 import com.ironhack.model.*;
+import com.ironhack.repository.*;
 import com.ironhack.styles.ConsoleColors;
 import com.ironhack.styles.Start;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,23 @@ public class CommandService {
     @Autowired
     private DataService dataService;
 
+    @Autowired
+    private LeaddRepository leaddRepository;
+
+    @Autowired
+    private ContactRepository contactRepository;
+
+    @Autowired
+    private OpportunityRepository opportunityRepository;
+
+    @Autowired
+    private SalesRepRepository salesRepRepository;
+
+    @Autowired
+    private AccountRepository accountRepository;
+
     //	commandCaller method is used to parse the different methods available, it will call the adequate one depending on
-//	user input.
+    //	user input.
     public void commandCaller(String[] command) {
 
         switch (command[0]) {
@@ -116,52 +132,55 @@ public class CommandService {
     //	This method calls for the appropriate query in each case.
     private void statisticsCommand(String[] command) {
         String input = "";
+        Integer result = 0;
 
         for (String string : command)
             input = input.concat(string) + " ";
         input = input.trim();
 
         if (input.equals("mean employeecount")) {
-
+            result = accountRepository.findAvgEmployeeCount();
         } else if (input.equals("median employeecount")) {
 
         } else if (input.equals("max employeecount")) {
-
+            result = accountRepository.findMaxEmployeeCount();
         } else if (input.equals("min employeecount")) {
-
+            result = accountRepository.findMinEmployeeCount();
         } else if (input.equals("mean quantity")) {
-
+            result = opportunityRepository.findAvgProductsOrdered();
         } else if (input.equals("median quantity")) {
 
         } else if (input.equals("max quantity")) {
-
+            result = opportunityRepository.findMaxProductsOrdered();
         } else if (input.equals("min quantity")) {
-
+            result = opportunityRepository.findMinProductsOrdered();
         } else if (input.equals("mean opps per account")) {
-
+            result = accountRepository.findAvgNumberOfOpportunities();
         } else if (input.equals("median opps per account")) {
 
         } else if (input.equals("max opps per account")) {
-
+            result = accountRepository.findMaxNumberOfOpportunities();
         } else if (input.equals("min opps per account")) {
-
+            result = accountRepository.findMinNumberOfOpportunities();
         } else {
             System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
         }
+        System.out.println("The result is: " + result);
     }
 
     //	reportCommand method calls for the appropriate query in each case.
     private void reportCommand(String[] command) {
         String input = "";
+        Integer result;
 
         for (String string : command)
             input = input.concat(string) + " ";
         input = input.trim();
 
         if (input.equals("report lead by salesrep")) {
-
+            result = leaddRepository.findBySalesRep();
         } else if (input.equals("report opportunity by salesrep")) {
-
+            result = opportunityRepository.findBySalesRep();
         } else if (input.equals("report closed-won by salesrep")) {
 
         } else if (input.equals("report closed-lost by salesrep")) {
@@ -169,7 +188,7 @@ public class CommandService {
         } else if (input.equals("report open by salesrep")) {
 
         } else if (input.equals("report opportunity by product")) {
-
+            result = opportunityRepository.findByProduct();
         } else if (input.equals("report closed-won by product")) {
 
         } else if (input.equals("report closed-lost by product")) {
@@ -177,7 +196,7 @@ public class CommandService {
         } else if (input.equals("report open by product")) {
 
         } else if (input.equals("report opportunity by country")) {
-
+            result = opportunityRepository.findByCountry();
         } else if (input.equals("report closed-won by country")) {
 
         } else if (input.equals("report closed-lost by country")) {
@@ -185,7 +204,7 @@ public class CommandService {
         } else if (input.equals("report open by country")) {
 
         } else if (input.equals("report opportunity by city")) {
-
+            result = opportunityRepository.findByCity();
         } else if (input.equals("report closed-won by city")) {
 
         } else if (input.equals("report closed-lost by city")) {
@@ -193,7 +212,7 @@ public class CommandService {
         } else if (input.equals("report open by city")) {
 
         } else if (input.equals("report opportunity by industry")) {
-
+            result = opportunityRepository.findByIndustry();
         } else if (input.equals("report closed-won by industry")) {
 
         } else if (input.equals("report open by industry")) {
