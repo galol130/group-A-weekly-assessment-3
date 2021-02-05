@@ -147,7 +147,7 @@ public class CommandService {
         if (input.equals("mean employeecount")) {
             result = accountRepository.findAvgEmployeeCount();
         } else if (input.equals("median employeecount")) {
-
+            result = (int) accountRepository.findAvgEmployeeCount();
         } else if (input.equals("max employeecount")) {
             result = accountRepository.findMaxEmployeeCount();
         } else if (input.equals("min employeecount")) {
@@ -155,7 +155,7 @@ public class CommandService {
         } else if (input.equals("mean quantity")) {
             result = opportunityRepository.findAvgProductsOrdered();
         } else if (input.equals("median quantity")) {
-
+            result = (int) opportunityRepository.findAvgProductsOrdered();
         } else if (input.equals("max quantity")) {
             result = opportunityRepository.findMaxProductsOrdered();
         } else if (input.equals("min quantity")) {
@@ -163,7 +163,7 @@ public class CommandService {
         } else if (input.equals("mean opps per account")) {
             result = accountRepository.findAvgNumberOfOpportunities();
         } else if (input.equals("median opps per account")) {
-
+            result = (int) accountRepository.findAvgNumberOfOpportunities();
         } else if (input.equals("max opps per account")) {
             result = accountRepository.findMaxNumberOfOpportunities();
         } else if (input.equals("min opps per account")) {
