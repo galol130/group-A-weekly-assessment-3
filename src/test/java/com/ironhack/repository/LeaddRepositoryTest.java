@@ -39,7 +39,5 @@ class LeaddRepositoryTest {
 
 	@Test
 	void findBySalesRep() {
-		//Integer result = leaddRepository.findBySalesRep();
-
 	}
 }
