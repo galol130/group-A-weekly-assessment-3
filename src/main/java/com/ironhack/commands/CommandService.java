@@ -165,7 +165,8 @@ public class CommandService {
         } else {
             System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
         }
-        System.out.println("The result is: " + result);
+        System.out.println(ConsoleColors.WHITE_BRIGHT + "--> The result is: " + result);
+        System.out.print(ConsoleColors.WHITE_BOLD);
     }
 
     //	reportCommand method calls for the appropriate query in each case.
@@ -222,12 +223,17 @@ public class CommandService {
             System.out.println("You shouldn't be reading this. Something unexpected happened. Please try again.");
         }
 
-        for (Object[] objects : result) {
-            for (int i = 0; i < objects.length; i++) {
-                System.out.print(objects[i] + " ");
+        if(result != null){
+            System.out.println(ConsoleColors.WHITE_BRIGHT + "\n");
+            for (Object[] objects : result) {
+                for (int i = 0; i < objects.length; i++) {
+                    System.out.print(objects[i] + " ");
+                }
+                System.out.println("");
             }
-            System.out.println("");
-        }
+        }else
+            System.out.println(ConsoleColors.RED_BOLD + "We don't have enough data to get this report ready!");
+        System.out.print(ConsoleColors.WHITE_BOLD);
     }
 
     //		First it gets the Lead using the id. Then it creates contact using information in lead and add it to the list.
