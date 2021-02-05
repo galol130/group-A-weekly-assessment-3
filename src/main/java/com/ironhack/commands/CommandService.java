@@ -177,7 +177,6 @@ public class CommandService {
         for (String string : command)
             input = input.concat(string) + " ";
         input = input.trim();
-        System.out.println(input);
 
         if (input.equals("lead by salesrep")) {
             result = leaddRepository.findBySalesRep();

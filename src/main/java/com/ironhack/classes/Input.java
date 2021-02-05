@@ -124,7 +124,7 @@ public class Input {
         //Validates if it's a valid report
         private static boolean report (String input){
 
-            if (input.equalsIgnoreCase("report lead by salesrep")
+            if (input.equalsIgnoreCase("lead by salesrep")
                     || input.equalsIgnoreCase("opportunity by salesrep")
                     || input.equalsIgnoreCase("closed-won by salesrep")
                     || input.equalsIgnoreCase("closed-lost by salesrep")
